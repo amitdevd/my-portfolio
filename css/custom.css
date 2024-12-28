@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root{
+  --primary-color:#000;
+  --secondry-color:red;
+}
+
+h1, h2, h3, h4,h5, h6, ul li strong{
+  font-family: "Roboto Mono", serif;
+}
+
+p, ul li{
+  font-family: "Montserrat", serif;
+}
+
+header{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+.custom-container{
+    max-width:1600px;
+    width: 100%;
+}
+
+.banner{
+    height: 500px;
+    overflow: hidden;
+    background: url(../img/banner.jpeg) no-repeat center/cover;
+}
+
+.banner-img img{
+    width: -webkit-fill-available;
+}
+
+.image-blog{
+    width: 600px;
+    height:400px;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+}
+
+.image-blog img{
+    width: fit-content;
+}
