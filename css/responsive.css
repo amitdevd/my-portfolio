@@ -1,0 +1,14 @@
+@media (max-width:576px) {
+    .banner{
+        height: 200px;
+        background-size: 100%;
+    }
+
+    .image-blog{
+        width: 100%;
+    }
+
+    .navbar-toggler-icon{
+        color: #fff;
+    }
+}
