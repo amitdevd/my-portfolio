@@ -1,0 +1,47 @@
+@media (max-width:1025px) {
+    header .navbar-expand-lg .navbar-nav{
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 991px) {
+    .experienceDetail ol li {
+        max-width: calc(100% / 3);
+        padding: 5px 0;
+        width: 100%;
+    }
+    .experience .experienceDetail{
+        padding: 10px;
+    }
+    .container{
+        max-width: 800px !important;
+    }
+}
+
+@media (max-width:768px) {
+    .container{
+        max-width: 600px !important;
+    }
+}
+
+@media (max-width:576px) {
+    .banner{
+        height: 200px;
+        background-size: 100%;
+    }
+
+    .image-blog{
+        width: 100%;
+    }
+
+    .navbar-toggler-icon{
+        color: #fff;
+    }
+    .container{
+        max-width: 500px !important;
+    }
+    .gola{
+        width: 30px;
+        height: 30px;
+    }
+}
