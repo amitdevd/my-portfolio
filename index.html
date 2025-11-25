@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Resume</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="css/bootstrap-min.css"
       rel="stylesheet"
     />
     <link href="css/custom.css" rel="stylesheet" />
@@ -16,27 +16,24 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      href="css/owl.carousel.min.css"
     />
   </head>
 
   <body>
     <header>
       <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <div
-            class="collapse navbar-collapse justify-content-center"
-            id="navbarSupportedContent">
-            <a class="navbar-brand" href="#">Amit Dwivedi</a>
-            <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <ul class="navbar-nav mb-2 mb-lg-0">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Amit Dwivedi</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0" id="navbarSupportedContent">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#about">About</a>
@@ -62,14 +59,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">contact</a>
               </li>
-              <!-- <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                  </li> -->
             </ul>
-            <!-- <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
           </div>
         </div>
       </nav>
@@ -87,8 +77,8 @@
           <div class="downloadMe">
             <h3>Amit Dwivedi</h3>
             <p>Frontend Designer</p>
-            <button class="btn myBtn" type="button">Hire Me</button>
-            <button class="btn myBtn" type="button">Download CV</button>
+            <a class="btn myBtn" type="button" href="#hireMe">Hire Me</a>
+            <a class="btn myBtn" type="button" href="img/amit_resume.pdf" target="_blank">Download CV</a>
           </div>
         </div>
       </div>
@@ -199,16 +189,53 @@
     </div>
 
     <div class="skills_contenar" id="skills">
-        <h2 class="text-center">Skills</h2>
+      <h2 class="text-center">Skills</h2>
       <div class="container">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
               <div class="progress-container progress-primary">
                 <div class="d-flex align-items-center justify-content-between">
-                  <span class="progress-badge">ANGULAR 12+</span>
-                  <div class="progress-bar" style="width: 25%">25%</div>
+                  <span class="progress-badge">ANGULAR 15+</span>
+                  <div class="progress-bar" style="width: 10%">25%</div>
                 </div>
+                <div class="progress" role="progressbar" aria-label="Example with label"
+                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width: 50%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="progress-container progress-primary">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span class="progress-badge">CSS</span>
+                <div class="progress-bar" style="width: 10%">80%</div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Example with label"
+                  aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="progress-container progress-primary">
+                <div  class="d-flex align-items-center justify-content-between">
+                  <span class="progress-badge">JAVASCRIPT JQUERY</span>
+                  <div class="progress-bar" style="width: 10%">60%</div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="Example with label"
+                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width: 60%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="progress-container progress-primary">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span class="progress-badge">REACT JS</span>
+                  <div class="progress-bar" style="width: 10%">25%</div>
+                </div>
+
                 <div class="progress" role="progressbar" aria-label="Example with label"
                   aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar" style="width: 25%"></div>
@@ -218,48 +245,12 @@
             <div class="col-md-6">
               <div class="progress-container progress-primary">
                 <div class="d-flex align-items-center justify-content-between">
-                    <span class="progress-badge">CSS</span>
-                <div class="progress-bar" style="width: 25%">80%</div>
+                  <span class="progress-badge">HTML</span>
+                    <div class="progress-bar" style="width: 10%">25%</div>
                 </div>
                 <div class="progress" role="progressbar" aria-label="Example with label"
-                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar" style="width: 80%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="progress-container progress-primary">
-                <span class="progress-badge">JAVASCRIPT JQUERY</span>
-                <div class="progress" role="progressbar" aria-label="Example with label"
-                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar" style="width: 80%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="progress-container progress-primary">
-                <span class="progress-badge"> FIREBASE</span>
-                <div class="progress" role="progressbar" aria-label="Example with label"
-                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar" style="width: 80%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="progress-container progress-primary">
-                <span class="progress-badge">REACT JS</span>
-                <div class="progress" role="progressbar" aria-label="Example with label"
-                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar" style="width: 80%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="progress-container progress-primary">
-                <span class="progress-badge">HTML</span>
-                <div class="progress" role="progressbar" aria-label="Example with label"
-                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar" style="width: 80%"></div>
+                  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar" style="width: 90%"></div>
                 </div>
               </div>
             </div>
@@ -301,6 +292,40 @@
         </div>
     </div>
 
+    <div class="contactBanner mb-3" id="hireMe">
+        <div class="customContainer">
+            <h4>Hire me</h4>
+            <h3>“I design and develop modern, responsive and user-friendly web interfaces using Angular, React and clean UI/UX practices.”</h3>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="" class="form-label">Name</label>
+                        <input type="text" class="form-control" placeholder="as a UX Developer" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="" class="form-label">Subject</label>
+                        <input type="text" class="form-control" placeholder="Subject" />
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <div class="form-group">
+                        <label for="" class="form-label">Email</label>
+                        <input type="text" class="form-control" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <div class="form-group">
+                        <label for="" class="form-label">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="contactMe">Contact Me</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer_content text-center">
             <ul class="list-unstyled">
@@ -313,61 +338,9 @@
         </div>
     </footer>
 
-    <!-- <div class="about">
-        <div class="container custom-container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12 align-self-center">
-                    <div class="content">
-                        <h2>
-                            Hello, It's Me <span>Amit Dwivedi</span> And I'm a 
-                            <span class="skills">designer</span>
-                        </h2>
-                        <p>I am a Front-End Angular Developer with extensive experience of 3.5 years in Designing Level. Expertise
-                            is to create, design and develop website using HTML5, CSS, Bootstrap, JS, Angular and React</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12 flex-column-reverse">
-                    <div class="image-blog">
-                        <img src="img/mine.jpeg" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="section-padding">
-        <div class="screenshot_slider owl-carousel">
-            <div class="item">
-                <img src="https://i.ibb.co/dJRvSK1/screen1.jpg" alt="" title="">
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/7nVfZR8/screen2.jpg" alt="" title="">
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/j8wmkDQ/screen3.jpg" alt="" title="">
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/nDQ581F/screen4.jpg" alt="" title="">
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/FYG4Wz9/screen5.jpg" alt="" title="">
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/GT4Gh1W/screen6.jpg" alt="" title="">
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/xqkdFXW/screen7.jpg" alt="" title="">
-            </div>
-            <div class="item">
-                <img src="https://i.ibb.co/7nVfZR8/screen2.jpg" alt="" title="">
-            </div>
-       </div>
-   </div> -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+   <script src="js/main.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
   </body>
 </html>
