@@ -2,20 +2,20 @@
         const skills = ["designer", "angular developer", "frontend developer", "UI/UX specialist"];
         let index = 0;
 
-        setInterval(() => {
-        const skillsSpan = document.querySelector(".skills");
-        index = (index + 1) % skills.length; // Cycle through the skills array
-        skillsSpan.textContent = skills[index];
-        }, 5000); // Change every 5 seconds
+        // setInterval(() => {
+        // const skillsSpan = document.querySelector(".skills");
+        // index = (index + 1) % skills.length; // Cycle through the skills array
+        // skillsSpan.textContent = skills[index];
+        // }, 5000); // Change every 5 seconds
 
-        $(window).on("scroll", function() {
-            if($(window).scrollTop() > 500) {
-                $("header").addClass("active");
-            } else {
-                //remove the background property so it comes transparent again (defined in your css)
-            $("header").removeClass("active");
-            }
-        });
+        // $(window).on("scroll", function() {
+        //     if($(window).scrollTop() > 500) {
+        //         $("header").addClass("active");
+        //     } else {
+        //         //remove the background property so it comes transparent again (defined in your css)
+        //     $("header").removeClass("active");
+        //     }
+        // });
 
         var owl = $('.screenshot_slider').owlCarousel({
             loop: true,
