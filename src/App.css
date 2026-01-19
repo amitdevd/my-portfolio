@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root{
+  --primary-color:#000;
+  --secondry-color:red;
+}
+
+h1, h2, h3, h4,h5, h6{
+  font-family: "Roboto Mono", serif;
+}
+
+p{
+  font-family: "Montserrat", serif;
+}
