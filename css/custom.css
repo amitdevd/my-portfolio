@@ -164,6 +164,9 @@ header .collapse ul .nav-item .nav-link.active{
 .social{
     margin-top: -30px;
 }
+.social a{
+    text-decoration: none;
+}
 
 .social span{
     width: 50px;
