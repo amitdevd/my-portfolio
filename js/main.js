@@ -9,35 +9,35 @@
         // }, 5000); // Change every 5 seconds
 
         $(window).on("scroll", function() {
-             if($(window).scrollTop() > 500) {
-                 $("header").addClass("active");
-             } else {
-                 //remove the background property so it comes transparent again (defined in your css)
-             $("header").removeClass("active");
-             }
-         });
-
-        var owl = $('.screenshot_slider').owlCarousel({
-            loop: true,
-            responsiveClass: true,
-            nav: true,
-            margin: 0,    
-            autoplayTimeout: 4000,
-            smartSpeed: 400,
-            center: true,
-            navText: ['&#8592;', '&#8594;'],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                600: {
-                    items: 5
-                },
-                1200: {
-                    items: 5
-                }
+            if($(window).scrollTop() > 500) {
+                $("header").addClass("active");
+            } else {
+                //remove the background property so it comes transparent again (defined in your css)
+            $("header").removeClass("active");
             }
         });
+
+        // var owl = $('.screenshot_slider').owlCarousel({
+        //     loop: true,
+        //     responsiveClass: true,
+        //     nav: true,
+        //     margin: 0,    
+        //     autoplayTimeout: 4000,
+        //     smartSpeed: 400,
+        //     center: true,
+        //     navText: ['&#8592;', '&#8594;'],
+        //     responsive: {
+        //         0: {
+        //             items: 1,
+        //         },
+        //         600: {
+        //             items: 5
+        //         },
+        //         1200: {
+        //             items: 5
+        //         }
+        //     }
+        // });
 
         /****************************/
 
@@ -55,6 +55,5 @@
                 owl.trigger('next.owl.carousel', [400]);
             //owl.trigger('owl.next');
             }
-
 
         });
