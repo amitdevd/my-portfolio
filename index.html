@@ -328,31 +328,31 @@
             <h4>Hire me</h4>
             <h3>“I design and develop modern, responsive and user-friendly web interfaces using Angular, React and clean UI/UX practices.”</h3>
             <form name="contact" method="POST" data-netlify="true">
-            <div class="row">
+              <div class="row">
 
-            <div class="col-lg-6">
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" required>
-            </div>
+                <div class="col-lg-6">
+                  <label>Name</label>
+                  <input type="text" name="name" class="form-control" required>
+                </div>
 
-            <div class="col-lg-6">
-            <label>Subject</label>
-            <input type="text" name="subject" class="form-control">
-            </div>
+                <div class="col-lg-6">
+                  <label>Subject</label>
+                  <input type="text" name="subject" class="form-control">
+                </div>
 
-            <div class="col-lg-12 mt-3">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" required>
-            </div>
+                <div class="col-lg-12 mt-3">
+                  <label>Email</label>
+                  <input type="email" name="email" class="form-control" required>
+                </div>
 
-            <div class="col-lg-12 mt-3">
-            <label>Message</label>
-            <textarea name="message" class="form-control"></textarea>
-            </div>
+                <div class="col-lg-12 mt-3">
+                  <label>Message</label>
+                  <textarea name="message" class="form-control"></textarea>
+                </div>
 
-            <button type="submit" class="contactMe">Contact Me</button>
+                <button type="submit" class="contactMe">Contact Me</button>
 
-            </div>
+              </div>
             </form>
         </div>
     </div>
@@ -373,5 +373,32 @@
    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
    <script src="js/main.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      (function(){
+      emailjs.init("8MV84QJhbcsOX7q0H");
+      })();
+
+      document.getElementById("contact-form")
+      .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      emailjs.sendForm(
+      "service_fnz9n9z",
+      "template_ncnxlkg",
+      this
+      ).then(function(){
+
+      alert("Message sent successfully!");
+
+      }, function(error){
+
+      alert("Failed to send message");
+
+      });
+
+      });
+</script>
   </body>
 </html>
