@@ -130,19 +130,76 @@ const education = [
   },
 ];
 
-function App() {
+function Header() {
+  return (
+    <header className="topbar">
+      <a className="brand" href="/">Amit Dwivedi</a>
+      <nav className="nav-links" aria-label="Primary navigation">
+        <a href="/#about">About</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#skills">Skills</a>
+        <a href="/#education">Education</a>
+        <a href="/blog">Blog</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+  );
+}
+
+function BlogPage() {
   return (
     <div className="site-shell">
-      <header className="topbar">
-        <a className="brand" href="#home">Amit Dwivedi</a>
-        <nav className="nav-links" aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
+      <Header />
+      <main>
+        <section className="blog-hero">
+          <div>
+            <p className="eyebrow">Blog</p>
+            <h1>Featured Project Notes</h1>
+            <p>
+              A closer look at live web experiences, UI decisions, and frontend implementation details.
+            </p>
+          </div>
+        </section>
+
+        <section className="section blog-list">
+          <article className="blog-card">
+            <a
+              className="blog-preview"
+              href="https://estatepulse-ai.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open EstatePulse AI"
+            >
+              <img src="/img/estatepulse-ai.png" alt="EstatePulse AI landing page screenshot" />
+            </a>
+            <div className="blog-content">
+              <p className="eyebrow">Landing Page</p>
+              <h2>EstatePulse AI</h2>
+              <p>
+                EstatePulse AI is a property-focused landing page with a clean product story, prominent call to action, and modern real-estate technology positioning.
+              </p>
+              <a className="button primary" href="https://estatepulse-ai.vercel.app/" target="_blank" rel="noreferrer">
+                Open Website
+              </a>
+            </div>
+          </article>
+        </section>
+      </main>
+      <footer className="footer">
+        <p>@All rights reserved</p>
+      </footer>
+    </div>
+  );
+}
+
+function App() {
+  if (window.location.pathname === '/blog') {
+    return <BlogPage />;
+  }
+
+  return (
+    <div className="site-shell">
+      <Header />
 
       <main>
         <section className="hero" id="home">
