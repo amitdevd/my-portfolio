@@ -154,11 +154,11 @@ function App() {
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">Hire Me</a>
-              <a className="button secondary" href="https://amitdwivedportfolio.netlify.app/img/amit_resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+              <a className="button secondary" href="/img/amit_resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
             </div>
           </div>
           <div className="hero-card" aria-label="Amit Dwivedi profile">
-            <img src="https://amitdwivedportfolio.netlify.app/img/mine.jpg" alt="Amit Dwivedi" />
+            <img src="/img/mine.jpg" alt="Amit Dwivedi" />
             <div>
               <span className="availability">Available for UI work</span>
               <strong>Angular Designer</strong>
