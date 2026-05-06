@@ -496,6 +496,11 @@ a {
   background: #f4eadc;
 }
 
+.project-stack {
+  display: grid;
+  gap: 28px;
+}
+
 .project-showcase {
   align-items: stretch;
   background: var(--panel);

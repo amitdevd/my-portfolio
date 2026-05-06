@@ -130,6 +130,23 @@ const education = [
   },
 ];
 
+const featuredProjects = [
+  {
+    eyebrow: 'Landing Page',
+    title: 'EstatePulse AI',
+    text: 'EstatePulse AI is a property-focused landing page with a clean product story, prominent call to action, and modern real-estate technology positioning.',
+    image: '/img/estatepulse-ai.png',
+    url: 'https://estatepulse-ai.vercel.app/',
+  },
+  {
+    eyebrow: 'Web App',
+    title: 'EstatePulse AI App',
+    text: 'The EstatePulse AI app page opens the interactive product experience for property insights, search, and AI-powered real-estate workflows.',
+    image: '/img/estatepulse-app.png',
+    url: 'https://estatepulse-ai.vercel.app/app',
+  },
+];
+
 function Header() {
   return (
     <header className="topbar">
@@ -295,27 +312,29 @@ function App() {
             <p className="eyebrow">Projects</p>
             <h2>Featured Work</h2>
           </div>
-          <article className="project-showcase">
-            <a
-              className="project-preview"
-              href="https://estatepulse-ai.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Open EstatePulse AI"
-            >
-              <img src="/img/estatepulse-ai.png" alt="EstatePulse AI landing page screenshot" />
-            </a>
-            <div className="project-content">
-              <p className="eyebrow">Landing Page</p>
-              <h3>EstatePulse AI</h3>
-              <p>
-                EstatePulse AI is a property-focused landing page with a clean product story, prominent call to action, and modern real-estate technology positioning.
-              </p>
-              <a className="button primary" href="https://estatepulse-ai.vercel.app/" target="_blank" rel="noreferrer">
-                Open Website
-              </a>
-            </div>
-          </article>
+          <div className="project-stack">
+            {featuredProjects.map((project) => (
+              <article className="project-showcase" key={project.title}>
+                <a
+                  className="project-preview"
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${project.title}`}
+                >
+                  <img src={project.image} alt={`${project.title} screenshot`} />
+                </a>
+                <div className="project-content">
+                  <p className="eyebrow">{project.eyebrow}</p>
+                  <h3>{project.title}</h3>
+                  <p>{project.text}</p>
+                  <a className="button primary" href={project.url} target="_blank" rel="noreferrer">
+                    Open Website
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="section skills" id="skills">
