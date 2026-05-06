@@ -492,11 +492,11 @@ a {
   max-width: 680px;
 }
 
-.blog-list {
-  min-height: 60vh;
+.projects {
+  background: #f4eadc;
 }
 
-.blog-card {
+.project-showcase {
   align-items: stretch;
   background: var(--panel);
   border: 1px solid var(--line);
@@ -507,13 +507,13 @@ a {
   overflow: hidden;
 }
 
-.blog-preview {
+.project-preview {
   background: #e9f0e6;
   display: block;
   min-height: 360px;
 }
 
-.blog-preview img {
+.project-preview img {
   display: block;
   height: 100%;
   object-fit: cover;
@@ -522,29 +522,68 @@ a {
   width: 100%;
 }
 
-.blog-preview:hover img {
+.project-preview:hover img {
   transform: scale(1.025);
 }
 
-.blog-content {
+.project-content {
   align-content: center;
   display: grid;
   justify-items: start;
   padding: clamp(24px, 4vw, 48px);
 }
 
-.blog-content h2 {
+.project-content h3 {
   color: var(--deep);
   font-size: clamp(34px, 5vw, 58px);
   line-height: 1;
   margin: 0;
 }
 
-.blog-content p:not(.eyebrow) {
+.project-content p:not(.eyebrow) {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.75;
   margin: 22px 0 28px;
+}
+
+.blog-list {
+  min-height: 60vh;
+}
+
+.post-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.post-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px;
+}
+
+.post-card span {
+  color: var(--coral);
+  display: block;
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.post-card h2 {
+  color: var(--deep);
+  font-size: 28px;
+  margin: 0 0 16px;
+}
+
+.post-card p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .footer {
@@ -562,7 +601,7 @@ a {
   .hero,
   .about,
   .contact,
-  .blog-card {
+  .project-showcase {
     grid-template-columns: 1fr;
   }
 
@@ -577,7 +616,8 @@ a {
   }
 
   .mini-grid,
-  .skill-list {
+  .skill-list,
+  .post-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -599,6 +639,7 @@ a {
   .social-strip,
   .mini-grid,
   .skill-list,
+  .post-grid,
   .education-card,
   .contact-links {
     grid-template-columns: 1fr;
@@ -620,7 +661,7 @@ a {
     margin-left: 18px;
   }
 
-  .blog-preview {
+  .project-preview {
     min-height: 240px;
   }
 }

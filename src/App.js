@@ -137,6 +137,7 @@ function Header() {
       <nav className="nav-links" aria-label="Primary navigation">
         <a href="/#about">About</a>
         <a href="/#experience">Experience</a>
+        <a href="/#projects">Projects</a>
         <a href="/#skills">Skills</a>
         <a href="/#education">Education</a>
         <a href="/blog">Blog</a>
@@ -147,6 +148,14 @@ function Header() {
 }
 
 function BlogPage() {
+  const posts = [
+    {
+      title: 'Daily UI Notes',
+      date: 'Coming soon',
+      text: 'New frontend design notes, learnings, and project updates will be added here.',
+    },
+  ];
+
   return (
     <div className="site-shell">
       <Header />
@@ -162,27 +171,15 @@ function BlogPage() {
         </section>
 
         <section className="section blog-list">
-          <article className="blog-card">
-            <a
-              className="blog-preview"
-              href="https://estatepulse-ai.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Open EstatePulse AI"
-            >
-              <img src="/img/estatepulse-ai.png" alt="EstatePulse AI landing page screenshot" />
-            </a>
-            <div className="blog-content">
-              <p className="eyebrow">Landing Page</p>
-              <h2>EstatePulse AI</h2>
-              <p>
-                EstatePulse AI is a property-focused landing page with a clean product story, prominent call to action, and modern real-estate technology positioning.
-              </p>
-              <a className="button primary" href="https://estatepulse-ai.vercel.app/" target="_blank" rel="noreferrer">
-                Open Website
-              </a>
-            </div>
-          </article>
+          <div className="post-grid">
+            {posts.map((post) => (
+              <article className="post-card" key={post.title}>
+                <span>{post.date}</span>
+                <h2>{post.title}</h2>
+                <p>{post.text}</p>
+              </article>
+            ))}
+          </div>
         </section>
       </main>
       <footer className="footer">
@@ -291,6 +288,34 @@ function App() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="section projects" id="projects">
+          <div className="section-heading">
+            <p className="eyebrow">Projects</p>
+            <h2>Featured Work</h2>
+          </div>
+          <article className="project-showcase">
+            <a
+              className="project-preview"
+              href="https://estatepulse-ai.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open EstatePulse AI"
+            >
+              <img src="/img/estatepulse-ai.png" alt="EstatePulse AI landing page screenshot" />
+            </a>
+            <div className="project-content">
+              <p className="eyebrow">Landing Page</p>
+              <h3>EstatePulse AI</h3>
+              <p>
+                EstatePulse AI is a property-focused landing page with a clean product story, prominent call to action, and modern real-estate technology positioning.
+              </p>
+              <a className="button primary" href="https://estatepulse-ai.vercel.app/" target="_blank" rel="noreferrer">
+                Open Website
+              </a>
+            </div>
+          </article>
         </section>
 
         <section className="section skills" id="skills">
