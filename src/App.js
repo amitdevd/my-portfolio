@@ -147,7 +147,7 @@ function App() {
       <main>
         <section className="hero" id="home">
           <div className="hero-copy">
-            <p className="eyebrow">Frontend Designer</p>
+            <p className="eyebrow">Frontend Developer</p>
             <h1>Amit Dwivedi</h1>
             <p className="hero-text">
               Creative and results-driven UI Developer crafting visually stunning and user-friendly web interfaces with HTML, CSS, JavaScript, Angular, and React.
