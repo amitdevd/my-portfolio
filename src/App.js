@@ -276,7 +276,8 @@ function ContactForm() {
       message,
     ].join('\n');
 
-    window.location.href = `mailto:contacttodwivedi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailLink = `mailto:contacttodwivedi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailLink, '_self');
   };
 
   return (
@@ -300,6 +301,9 @@ function ContactForm() {
         <textarea name="message" rows="5" placeholder="Tell me about your project" required />
       </label>
       <button className="button primary" type="submit">Send Message</button>
+      <a className="email-fallback" href="mailto:contacttodwivedi@gmail.com">
+        contacttodwivedi@gmail.com
+      </a>
     </form>
   );
 }
