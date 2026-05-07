@@ -532,6 +532,19 @@ a {
   justify-content: center;
 }
 
+.form-status {
+  background: rgba(211, 161, 58, 0.16);
+  border: 1px solid rgba(211, 161, 58, 0.34);
+  border-radius: 6px;
+  color: #ffe2a1;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 0;
+  padding: 12px 14px;
+  text-align: center;
+}
+
 .email-fallback {
   color: rgba(255, 255, 255, 0.74);
   font-size: 14px;

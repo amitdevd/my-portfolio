@@ -262,6 +262,8 @@ function ProjectCarousel() {
 }
 
 function ContactForm() {
+  const [formStatus, setFormStatus] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -276,8 +278,9 @@ function ContactForm() {
       message,
     ].join('\n');
 
-    const mailLink = `mailto:contacttodwivedi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailLink, '_self');
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=contacttodwivedi@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setFormStatus('Your message is ready. Gmail opened in a new tab so you can send it.');
+    window.open(gmailLink, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -301,6 +304,7 @@ function ContactForm() {
         <textarea name="message" rows="5" placeholder="Tell me about your project" required />
       </label>
       <button className="button primary" type="submit">Send Message</button>
+      {formStatus && <p className="form-status">{formStatus}</p>}
       <a className="email-fallback" href="mailto:contacttodwivedi@gmail.com">
         contacttodwivedi@gmail.com
       </a>
