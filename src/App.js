@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 const skills = [
@@ -208,51 +208,53 @@ function BlogPage() {
 }
 
 function ProjectCarousel() {
-  const carouselRef = useRef(null);
+  const [activeProject, setActiveProject] = useState(0);
+  const project = featuredProjects[activeProject];
 
-  const scrollProjects = (direction) => {
-    if (!carouselRef.current) {
-      return;
-    }
-
-    const cardWidth = carouselRef.current.querySelector('.project-showcase')?.offsetWidth || 0;
-    carouselRef.current.scrollBy({
-      left: direction * (cardWidth + 24),
-      behavior: 'smooth',
-    });
+  const changeProject = (direction) => {
+    setActiveProject((current) => (current + direction + featuredProjects.length) % featuredProjects.length);
   };
 
   return (
     <div className="project-carousel-wrap">
       <div className="carousel-controls" aria-label="Project carousel controls">
-        <button type="button" onClick={() => scrollProjects(-1)} aria-label="Previous project">
+        <button type="button" onClick={() => changeProject(-1)} aria-label="Previous project">
           <span aria-hidden="true">‹</span>
         </button>
-        <button type="button" onClick={() => scrollProjects(1)} aria-label="Next project">
+        <button type="button" onClick={() => changeProject(1)} aria-label="Next project">
           <span aria-hidden="true">›</span>
         </button>
       </div>
-      <div className="project-carousel" ref={carouselRef}>
-        {featuredProjects.map((project) => (
-          <article className="project-showcase" key={project.title}>
-            <a
-              className="project-preview"
-              href={project.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Open ${project.title}`}
-            >
-              <img src={project.image} alt={`${project.title} screenshot`} />
+      <div className="project-carousel">
+        <article className="project-showcase" key={project.title}>
+          <a
+            className="project-preview"
+            href={project.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open ${project.title}`}
+          >
+            <img src={project.image} alt={`${project.title} screenshot`} />
+          </a>
+          <div className="project-content">
+            <p className="eyebrow">{project.eyebrow}</p>
+            <h3>{project.title}</h3>
+            <p>{project.text}</p>
+            <a className="button primary" href={project.url} target="_blank" rel="noreferrer">
+              Open Website
             </a>
-            <div className="project-content">
-              <p className="eyebrow">{project.eyebrow}</p>
-              <h3>{project.title}</h3>
-              <p>{project.text}</p>
-              <a className="button primary" href={project.url} target="_blank" rel="noreferrer">
-                Open Website
-              </a>
-            </div>
-          </article>
+          </div>
+        </article>
+      </div>
+      <div className="carousel-dots" aria-label="Project carousel pagination">
+        {featuredProjects.map((item, index) => (
+          <button
+            className={index === activeProject ? 'active' : ''}
+            type="button"
+            key={item.title}
+            onClick={() => setActiveProject(index)}
+            aria-label={`Show ${item.title}`}
+          />
         ))}
       </div>
     </div>
