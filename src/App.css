@@ -606,13 +606,14 @@ a {
   display: grid;
   gap: 0;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.75fr);
+  min-height: 520px;
   overflow: hidden;
 }
 
 .project-preview {
   background: #e9f0e6;
   display: block;
-  min-height: 420px;
+  height: 520px;
 }
 
 .project-preview img {
@@ -646,9 +647,14 @@ a {
 
 .project-content p:not(.eyebrow) {
   color: var(--muted);
+  display: -webkit-box;
   font-size: 18px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   line-height: 1.75;
   margin: 22px 0 28px;
+  min-height: calc(18px * 1.75 * 3);
+  overflow: hidden;
 }
 
 .carousel-dots {
@@ -733,6 +739,11 @@ a {
 
   .project-showcase {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .project-preview {
+    height: 360px;
   }
 
   .hero {
@@ -793,6 +804,6 @@ a {
   }
 
   .project-preview {
-    min-height: 260px;
+    height: 260px;
   }
 }
