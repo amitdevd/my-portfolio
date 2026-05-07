@@ -148,6 +148,136 @@ const featuredProjects = [
   },
 ];
 
+const youtubeChannel = {
+  name: 'Amit Dwivedi YouTube',
+  url: 'https://www.youtube.com/channel/UCSy1kmf9WTa7Bjo7HeAgOWQ',
+  videosUrl: 'https://www.youtube.com/channel/UCSy1kmf9WTa7Bjo7HeAgOWQ/videos',
+  shortsUrl: 'https://www.youtube.com/channel/UCSy1kmf9WTa7Bjo7HeAgOWQ/shorts',
+  playlistsUrl: 'https://www.youtube.com/channel/UCSy1kmf9WTa7Bjo7HeAgOWQ/playlists',
+  postsUrl: 'https://www.youtube.com/channel/UCSy1kmf9WTa7Bjo7HeAgOWQ/community',
+};
+
+const youtubeVideos = [
+  {
+    title: 'madhugangeshwar mandir (bhagulinaath mandir)',
+    meta: '51 views - 2 weeks ago',
+    duration: '0:24',
+    videoId: 'zrqm6BXJitI',
+    url: youtubeChannel.videosUrl,
+  },
+];
+
+const youtubeShorts = [
+  {
+    title: 'सावधान हो जाओ टैटू बनवाने वालो',
+    meta: '1 view',
+    duration: 'Shorts',
+    videoId: 'NZefD3gmbew',
+  },
+  {
+    title: 'tention he ki jaati hi ni #funnyvideo #comedy #funny #viralreels',
+    meta: '36 views',
+    duration: 'Shorts',
+    videoId: 'jxY-Nevw5uo',
+  },
+  {
+    title: 'indian gas se #funnyvideo #comedy',
+    meta: '200 views',
+    duration: 'Shorts',
+    videoId: 'qZRP9pV32MA',
+  },
+  {
+    title: 'batao fir 1 million kidhr he #funnyvideo #comedy #viralreels #aajkasonekabhavbataen #viralvideo',
+    meta: '431 views',
+    duration: 'Shorts',
+    videoId: 'A3qXY0ik_Oo',
+  },
+  {
+    title: '#comedy #funnyvideo #viralreels #viralvideo #funny',
+    meta: '99 views',
+    duration: 'Shorts',
+    videoId: 'Lg1wgyHL1yg',
+  },
+  {
+    title: 'gyan jyada jaruri nahi he paisa jyada jaruri he #viralreels #viralvideo #funnyshorts',
+    meta: '39 views',
+    duration: 'Shorts',
+    videoId: 'W8-eQbDWMSQ',
+  },
+  {
+    title: '#viral #viralreels #viralvideo #viralshorts #funny #funnyvideo',
+    meta: '41 views',
+    duration: 'Shorts',
+    videoId: '1oxM1HSZfjM',
+  },
+  {
+    title: '#viralvideo #viralshorts #viralvideos #viralreels #funnyvideo',
+    meta: '389 views',
+    duration: 'Shorts',
+    videoId: 'p6gzlbI7A64',
+  },
+  {
+    title: '#viral #funny #funnyvideo #funnyshorts #chamaktasitara',
+    meta: '150 views',
+    duration: 'Shorts',
+    videoId: 'GvTTSd9AS94',
+  },
+  {
+    title: '#funnyvideo #manoranjan #khelakhelo',
+    meta: '399 views',
+    duration: 'Shorts',
+    videoId: 'ZSvexxUguq4',
+  },
+  {
+    title: '27 April 2026',
+    meta: '245 views',
+    duration: 'Shorts',
+    videoId: 'pS-BriYwFhU',
+  },
+  {
+    title: 'welcome to my blog',
+    meta: '61 views',
+    duration: 'Shorts',
+    videoId: 'wZrXDJup9h8',
+  },
+  {
+    title: 'भोजन करने से पूर्व किया जाने वाला मंत्रोच्चारण #sanatandharma #sanatangyan #achhibaate #children',
+    meta: '31 views',
+    duration: 'Shorts',
+    videoId: 'XbUTx6ToVs4',
+  },
+  {
+    title: 'ये हे हमारे घर की लक्ष्मी (कशिश, कृषा, बंटू) #entertainmentvideo #gharkikahani',
+    meta: '416 views',
+    duration: 'Shorts',
+    videoId: 'dhpUtVaO5kU',
+  },
+  {
+    title: 'trending done',
+    meta: '441 views',
+    duration: 'Shorts',
+    videoId: 'CSt3b4YtD6Y',
+  },
+  {
+    title: 'मेरी भांजी का अन्नप्राशन संस्कार हुआ अंततः वह भी अब गप्पे मार के खा जाएगी',
+    meta: '354 views',
+    duration: 'Shorts',
+    videoId: 'Z-lh761hono',
+  },
+  {
+    title: 'ise suno aap logo ke dukh dard dur honge jaldi',
+    meta: '1 thousand views',
+    duration: 'Shorts',
+    videoId: 'S5MlBLMbTHU',
+  },
+  {
+    title: 'Roman Abramovich’s Private Jet Was Unreal',
+    meta: '534 views',
+    duration: 'Shorts',
+    videoId: '6I2bQqF4Ufo',
+  },
+];
+
 function Header() {
   return (
     <header className="topbar">
@@ -165,14 +295,40 @@ function Header() {
   );
 }
 
+function YouTubeCard({ item, type }) {
+  const watchUrl = item.videoId
+    ? type === 'shorts'
+      ? `https://www.youtube.com/shorts/${item.videoId}`
+      : `https://www.youtube.com/watch?v=${item.videoId}`
+    : item.url;
+  const thumbnailUrl = item.videoId
+    ? type === 'shorts'
+      ? `https://i.ytimg.com/vi/${item.videoId}/frame0.jpg`
+      : `https://i.ytimg.com/vi/${item.videoId}/hqdefault.jpg`
+    : '';
+
+  return (
+    <a className={`youtube-card ${type === 'shorts' ? 'short-card' : ''}`} href={watchUrl} target="_blank" rel="noreferrer">
+      <span className="youtube-thumb">
+        {thumbnailUrl ? <img src={thumbnailUrl} alt={item.title} /> : <span className="youtube-thumb-fallback">YouTube</span>}
+        {item.duration && <small>{item.duration}</small>}
+      </span>
+      <strong>{item.title}</strong>
+      <span>{item.meta}</span>
+    </a>
+  );
+}
+
 function BlogPage() {
-  const posts = [
-    {
-      title: 'Daily UI Notes',
-      date: 'Coming soon',
-      text: 'New frontend design notes, learnings, and project updates will be added here.',
-    },
+  const [activeYoutubeTab, setActiveYoutubeTab] = useState('videos');
+  const latestVideo = youtubeVideos[0];
+  const tabs = [
+    { id: 'videos', label: 'Videos', url: youtubeChannel.videosUrl, items: youtubeVideos },
+    { id: 'shorts', label: 'Shorts', url: youtubeChannel.shortsUrl, items: youtubeShorts },
+    { id: 'playlists', label: 'Playlists', url: youtubeChannel.playlistsUrl, items: [] },
+    { id: 'posts', label: 'Posts', url: youtubeChannel.postsUrl, items: [] },
   ];
+  const activeTab = tabs.find((tab) => tab.id === activeYoutubeTab) || tabs[0];
 
   return (
     <div className="site-shell">
@@ -181,23 +337,67 @@ function BlogPage() {
         <section className="blog-hero">
           <div>
             <p className="eyebrow">Blog</p>
-            <h1>Featured Project Notes</h1>
+            <h1>YouTube Videos & Reels</h1>
             <p>
-              A closer look at live web experiences, UI decisions, and frontend implementation details.
+              My latest YouTube uploads, shorts, and reels are collected here from the channel.
             </p>
           </div>
         </section>
 
-        <section className="section blog-list">
-          <div className="post-grid">
-            {posts.map((post) => (
-              <article className="post-card" key={post.title}>
-                <span>{post.date}</span>
-                <h2>{post.title}</h2>
-                <p>{post.text}</p>
-              </article>
+        <section className="section youtube-section">
+          <div className="section-heading">
+            <p className="eyebrow">Latest Uploads</p>
+            <h2>{youtubeChannel.name}</h2>
+          </div>
+          <div className="youtube-panel">
+            {latestVideo.videoId ? (
+              <iframe
+                title={latestVideo.title}
+                src={`https://www.youtube.com/embed/${latestVideo.videoId}`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            ) : (
+              <a className="latest-video-link" href={youtubeChannel.videosUrl} target="_blank" rel="noreferrer">
+                <span>Latest Video</span>
+                <strong>{latestVideo.title}</strong>
+              </a>
+            )}
+            <div className="youtube-copy">
+              <h3>Videos, Shorts & Reels</h3>
+              <p>
+                Open the latest videos, shorts, playlists, and posts from my channel.
+              </p>
+              <a className="button primary" href={youtubeChannel.url} target="_blank" rel="noreferrer">
+                Open YouTube Channel
+              </a>
+            </div>
+          </div>
+
+          <div className="youtube-tabs" aria-label="YouTube tabs">
+            {tabs.map((tab) => (
+              <button
+                className={activeYoutubeTab === tab.id ? 'active' : ''}
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveYoutubeTab(tab.id)}
+              >
+                {tab.label}
+              </button>
             ))}
           </div>
+
+          {activeTab.items.length > 0 ? (
+            <div className={`youtube-grid ${activeTab.id === 'shorts' ? 'shorts-grid' : ''}`}>
+              {activeTab.items.map((item) => (
+                <YouTubeCard item={item} key={item.title} type={activeTab.id} />
+              ))}
+            </div>
+          ) : (
+            <a className="youtube-empty" href={activeTab.url} target="_blank" rel="noreferrer">
+              Open {activeTab.label} on YouTube
+            </a>
+          )}
         </section>
       </main>
       <footer className="footer">
