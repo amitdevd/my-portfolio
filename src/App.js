@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import './App.css';
 
 const skills = [
@@ -206,6 +207,101 @@ function BlogPage() {
   );
 }
 
+function ProjectCarousel() {
+  const carouselRef = useRef(null);
+
+  const scrollProjects = (direction) => {
+    if (!carouselRef.current) {
+      return;
+    }
+
+    const cardWidth = carouselRef.current.querySelector('.project-showcase')?.offsetWidth || 0;
+    carouselRef.current.scrollBy({
+      left: direction * (cardWidth + 24),
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <div className="project-carousel-wrap">
+      <div className="carousel-controls" aria-label="Project carousel controls">
+        <button type="button" onClick={() => scrollProjects(-1)} aria-label="Previous project">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <button type="button" onClick={() => scrollProjects(1)} aria-label="Next project">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
+      <div className="project-carousel" ref={carouselRef}>
+        {featuredProjects.map((project) => (
+          <article className="project-showcase" key={project.title}>
+            <a
+              className="project-preview"
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${project.title}`}
+            >
+              <img src={project.image} alt={`${project.title} screenshot`} />
+            </a>
+            <div className="project-content">
+              <p className="eyebrow">{project.eyebrow}</p>
+              <h3>{project.title}</h3>
+              <p>{project.text}</p>
+              <a className="button primary" href={project.url} target="_blank" rel="noreferrer">
+                Open Website
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ContactForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject') || 'Portfolio enquiry';
+    const message = formData.get('message');
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      '',
+      message,
+    ].join('\n');
+
+    window.location.href = `mailto:contacttodwivedi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  return (
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-row">
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="your@email.com" required />
+        </label>
+      </div>
+      <label>
+        Subject
+        <input type="text" name="subject" placeholder="Project enquiry" />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" placeholder="Tell me about your project" required />
+      </label>
+      <button className="button primary" type="submit">Send Message</button>
+    </form>
+  );
+}
+
 function App() {
   if (window.location.pathname === '/blog') {
     return <BlogPage />;
@@ -312,29 +408,7 @@ function App() {
             <p className="eyebrow">Projects</p>
             <h2>Featured Work</h2>
           </div>
-          <div className="project-stack">
-            {featuredProjects.map((project) => (
-              <article className="project-showcase" key={project.title}>
-                <a
-                  className="project-preview"
-                  href={project.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Open ${project.title}`}
-                >
-                  <img src={project.image} alt={`${project.title} screenshot`} />
-                </a>
-                <div className="project-content">
-                  <p className="eyebrow">{project.eyebrow}</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.text}</p>
-                  <a className="button primary" href={project.url} target="_blank" rel="noreferrer">
-                    Open Website
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ProjectCarousel />
         </section>
 
         <section className="section skills" id="skills">
@@ -383,14 +457,18 @@ function App() {
           <div>
             <p className="eyebrow">Hire me</p>
             <h2>I design and develop modern, responsive and user-friendly web interfaces using Angular, React and clean UI/UX practices.</h2>
+            <p className="contact-copy">Fill the form and your email app will open with the message ready to send to contacttodwivedi@gmail.com.</p>
           </div>
-          <div className="contact-links">
-            {socialLinks.map((link) => (
-              <a key={link.name} href={link.url} target="_blank" rel="noreferrer">
-                <span>{link.label}</span>
-                {link.name}
-              </a>
-            ))}
+          <div className="contact-panel">
+            <ContactForm />
+            <div className="contact-links">
+              {socialLinks.map((link) => (
+                <a key={link.name} href={link.url} target="_blank" rel="noreferrer">
+                  <span>{link.label}</span>
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       </main>
