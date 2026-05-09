@@ -10,10 +10,11 @@ function AdminPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
     setIsSaving(true);
     setFormStatus('');
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const title = formData.get('title').trim();
     const excerpt = formData.get('excerpt').trim();
     const content = formData.get('content').trim();
@@ -38,7 +39,7 @@ function AdminPage() {
 
     try {
       await createBlogPost(post);
-      event.currentTarget.reset();
+      form.reset();
       setFormStatus('Post published. It will appear on the blog for visitors.');
     } catch (error) {
       setFormStatus(error.message || 'Post could not be published.');
