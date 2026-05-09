@@ -47,7 +47,9 @@ exports.handler = async (event) => {
     published_at: payload.published_at || new Date().toISOString(),
   };
 
-  const response = await fetch(`${supabaseUrl}/rest/v1/blog_posts`, {
+  const normalizedSupabaseUrl = supabaseUrl.replace(/\/rest\/v1\/?$/, '').replace(/\/$/, '');
+
+  const response = await fetch(`${normalizedSupabaseUrl}/rest/v1/blog_posts`, {
     method: 'POST',
     headers: {
       apikey: serviceRoleKey,
