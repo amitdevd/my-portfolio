@@ -1,7 +1,8 @@
 import { formatDate, getYouTubeEmbedUrl } from '../services/cms';
 
-function BlogPostCard({ post }) {
+function BlogPostCard({ onShare, onVote, votedType, post }) {
   const embedUrl = getYouTubeEmbedUrl(post.youtube_url);
+  const canInteract = Boolean(post.id && post.id !== 'sample-post');
 
   return (
     <article className="live-post-card">
@@ -23,6 +24,27 @@ function BlogPostCard({ post }) {
             Open Video
           </a>
         )}
+        <div className="post-actions">
+          <button
+            className={votedType === 'like' ? 'active' : ''}
+            type="button"
+            disabled={!canInteract || Boolean(votedType)}
+            onClick={() => onVote(post.id, 'like')}
+          >
+            Like {post.likes || 0}
+          </button>
+          <button
+            className={votedType === 'dislike' ? 'active' : ''}
+            type="button"
+            disabled={!canInteract || Boolean(votedType)}
+            onClick={() => onVote(post.id, 'dislike')}
+          >
+            Dislike {post.dislikes || 0}
+          </button>
+          <button type="button" onClick={() => onShare(post)}>
+            Share
+          </button>
+        </div>
       </div>
     </article>
   );

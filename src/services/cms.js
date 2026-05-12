@@ -15,6 +15,8 @@ export const fallbackBlogPosts = [
       'This blog is ready for live posts from the admin panel. Connect Supabase, publish a post, and it will appear for visitors without changing code again.',
     cover_image: '',
     youtube_url: '',
+    likes: 0,
+    dislikes: 0,
     category: 'Update',
     published_at: '2026-05-07',
   },
@@ -85,6 +87,40 @@ export async function createBlogPost(post) {
   if (!response.ok) {
     const result = await response.json().catch(() => ({}));
     throw new Error(result.error || 'Post could not be published.');
+  }
+
+  return response.json();
+}
+
+export async function deleteBlogPost(id, adminPassword) {
+  const response = await fetch('/.netlify/functions/delete-blog-post', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id, admin_password: adminPassword }),
+  });
+
+  if (!response.ok) {
+    const result = await response.json().catch(() => ({}));
+    throw new Error(result.error || 'Post could not be deleted.');
+  }
+
+  return response.json();
+}
+
+export async function voteBlogPost(id, voteType) {
+  const response = await fetch('/.netlify/functions/vote-blog-post', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id, vote_type: voteType }),
+  });
+
+  if (!response.ok) {
+    const result = await response.json().catch(() => ({}));
+    throw new Error(result.error || 'Vote could not be saved.');
   }
 
   return response.json();

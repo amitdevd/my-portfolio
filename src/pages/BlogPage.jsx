@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import AdSlot from '../components/AdSlot';
 import BlogPostCard from '../components/BlogPostCard';
 import YouTubeCard from '../components/YouTubeCard';
-import { fallbackBlogPosts, fetchBlogPosts } from '../services/cms';
+import { fallbackBlogPosts, fetchBlogPosts, voteBlogPost } from '../services/cms';
 import { youtubeChannel, youtubeShorts, youtubeVideos } from '../data/youtube';
 import '../styles/blog.css';
 
@@ -12,6 +12,13 @@ function BlogPage() {
   const [activeYoutubeTab, setActiveYoutubeTab] = useState('videos');
   const [posts, setPosts] = useState(fallbackBlogPosts);
   const [postStatus, setPostStatus] = useState('Loading live posts...');
+  const [votedPosts, setVotedPosts] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('blog-post-votes') || '{}');
+    } catch (error) {
+      return {};
+    }
+  });
   const latestVideo = youtubeVideos[0];
   const tabs = [
     { id: 'videos', label: 'Videos', url: youtubeChannel.videosUrl, items: youtubeVideos },
@@ -41,6 +48,46 @@ function BlogPage() {
     };
   }, []);
 
+  const updatePostCounts = (id, updates) => {
+    setPosts((currentPosts) =>
+      currentPosts.map((post) => (post.id === id ? { ...post, ...updates } : post))
+    );
+  };
+
+  const handleVote = async (id, voteType) => {
+    if (votedPosts[id]) return;
+
+    try {
+      const result = await voteBlogPost(id, voteType);
+      const nextVotes = { ...votedPosts, [id]: voteType };
+      setVotedPosts(nextVotes);
+      localStorage.setItem('blog-post-votes', JSON.stringify(nextVotes));
+      updatePostCounts(id, {
+        likes: result.post.likes,
+        dislikes: result.post.dislikes,
+      });
+    } catch (error) {
+      setPostStatus(error.message || 'Vote could not be saved.');
+    }
+  };
+
+  const handleShare = async (post) => {
+    const shareUrl = `${window.location.origin}/blog#${post.slug || post.id}`;
+    const shareData = {
+      title: post.title,
+      text: post.excerpt || post.title,
+      url: shareUrl,
+    };
+
+    if (navigator.share) {
+      await navigator.share(shareData);
+      return;
+    }
+
+    await navigator.clipboard.writeText(shareUrl);
+    setPostStatus('Post link copied.');
+  };
+
   return (
     <div className="site-shell">
       <Header />
@@ -62,7 +109,13 @@ function BlogPage() {
           <div className="blog-layout">
             <div className="live-post-grid">
               {posts.map((post) => (
-                <BlogPostCard post={post} key={post.id || post.slug || post.title} />
+                <BlogPostCard
+                  onShare={handleShare}
+                  onVote={handleVote}
+                  post={post}
+                  votedType={votedPosts[post.id]}
+                  key={post.id || post.slug || post.title}
+                />
               ))}
             </div>
             <div className="ad-column">

@@ -1,12 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { createBlogPost, createSlug, supabaseConfig } from '../services/cms';
+import { createBlogPost, createSlug, deleteBlogPost, fetchBlogPosts, supabaseConfig } from '../services/cms';
 import '../styles/admin.css';
 
 function AdminPage() {
   const [formStatus, setFormStatus] = useState('');
   const [isSaving, setIsSaving] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [deleteStatus, setDeleteStatus] = useState('');
   const isConnected = Boolean(supabaseConfig.url && supabaseConfig.anonKey);
+
+  const loadPosts = () => {
+    fetchBlogPosts()
+      .then(setPosts)
+      .catch(() => setPosts([]));
+  };
+
+  useEffect(() => {
+    loadPosts();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,10 +53,24 @@ function AdminPage() {
       await createBlogPost(post);
       form.reset();
       setFormStatus('Post published. It will appear on the blog for visitors.');
+      loadPosts();
     } catch (error) {
       setFormStatus(error.message || 'Post could not be published.');
     } finally {
       setIsSaving(false);
+    }
+  };
+
+  const handleDelete = async (post) => {
+    const adminPassword = window.prompt(`Admin password to delete "${post.title}"`);
+    if (!adminPassword) return;
+
+    try {
+      await deleteBlogPost(post.id, adminPassword);
+      setDeleteStatus('Post deleted.');
+      setPosts((currentPosts) => currentPosts.filter((item) => item.id !== post.id));
+    } catch (error) {
+      setDeleteStatus(error.message || 'Post could not be deleted.');
     }
   };
 
@@ -111,6 +137,32 @@ function AdminPage() {
               <li>Add affiliate or sponsored links inside posts.</li>
             </ul>
           </aside>
+        </section>
+
+        <section className="section admin-posts-section">
+          <div className="section-heading">
+            <p className="eyebrow">Manage Posts</p>
+            <h2>Delete Published Posts</h2>
+          </div>
+          {deleteStatus && <p className="cms-status">{deleteStatus}</p>}
+          <div className="admin-post-list">
+            {posts.length ? (
+              posts.map((post) => (
+                <article className="admin-post-row" key={post.id}>
+                  <div>
+                    <span>{post.category || 'Blog'}</span>
+                    <h3>{post.title}</h3>
+                    <p>{post.excerpt}</p>
+                  </div>
+                  <button type="button" onClick={() => handleDelete(post)}>
+                    Delete
+                  </button>
+                </article>
+              ))
+            ) : (
+              <p className="admin-warning">No posts found yet.</p>
+            )}
+          </div>
         </section>
       </main>
     </div>
