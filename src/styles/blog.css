@@ -235,17 +235,30 @@
 }
 
 .post-actions button {
+  align-items: center;
   background: rgba(36, 107, 91, 0.1);
   border: 1px solid rgba(36, 107, 91, 0.16);
   border-radius: 999px;
   color: var(--green);
   cursor: pointer;
+  display: inline-flex;
   font: inherit;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 900;
+  gap: 6px;
+  justify-content: center;
   min-height: 38px;
-  padding: 9px 14px;
+  min-width: 44px;
+  padding: 9px 12px;
   white-space: nowrap;
+}
+
+.post-actions button span {
+  line-height: 1;
+}
+
+.post-actions button strong {
+  font-size: 13px;
 }
 
 .post-actions button:hover,

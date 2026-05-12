@@ -28,21 +28,25 @@ function BlogPostCard({ onShare, onVote, votedType, post }) {
           <button
             className={votedType === 'like' ? 'active' : ''}
             type="button"
+            aria-label={`Like ${post.title}`}
             disabled={!canInteract || Boolean(votedType)}
             onClick={() => onVote(post, 'like')}
           >
-            Like {post.likes || 0}
+            <span aria-hidden="true">▲</span>
+            <strong>{post.likes || 0}</strong>
           </button>
           <button
             className={votedType === 'dislike' ? 'active' : ''}
             type="button"
+            aria-label={`Dislike ${post.title}`}
             disabled={!canInteract || Boolean(votedType)}
             onClick={() => onVote(post, 'dislike')}
           >
-            Dislike {post.dislikes || 0}
+            <span aria-hidden="true">▼</span>
+            <strong>{post.dislikes || 0}</strong>
           </button>
-          <button type="button" onClick={() => onShare(post)}>
-            Share
+          <button type="button" aria-label={`Share ${post.title}`} onClick={() => onShare(post)}>
+            <span aria-hidden="true">↗</span>
           </button>
         </div>
       </div>
