@@ -229,8 +229,8 @@
 
 .post-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 8px;
   margin-top: 4px;
 }
 
@@ -243,18 +243,18 @@
   cursor: pointer;
   display: inline-flex;
   font: inherit;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
-  gap: 6px;
+  gap: 5px;
   justify-content: center;
-  min-height: 38px;
-  min-width: 44px;
-  padding: 9px 12px;
+  min-height: 36px;
+  min-width: 42px;
+  padding: 8px 10px;
   white-space: nowrap;
 }
 
-.post-actions button span {
-  line-height: 1;
+.post-actions button svg {
+  flex: 0 0 auto;
 }
 
 .post-actions button strong {
@@ -530,13 +530,14 @@
   }
 
   .post-actions {
-    gap: 8px;
+    gap: 6px;
   }
 
   .post-actions button {
-    flex: 1 1 100%;
+    flex: 1 1 0;
     justify-content: center;
     min-width: 0;
+    padding: 8px 6px;
   }
 }
 
