@@ -513,12 +513,61 @@
 @media (max-width: 760px) {
   .live-blog-section,
   .youtube-section {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 42px 16px;
+  }
+
+  .blog-hero {
+    padding: 54px 24px 58px;
+  }
+
+  .blog-hero h1 {
+    font-size: 38px;
+    line-height: 1.04;
+    max-width: 440px;
+  }
+
+  .blog-hero p:last-child {
+    font-size: 17px;
+    line-height: 1.55;
+    margin-top: 18px;
+    max-width: 440px;
+  }
+
+  .section-heading {
+    margin-bottom: 20px;
+  }
+
+  .section-heading h2 {
+    font-size: 34px;
+    line-height: 1.05;
   }
 
   .live-post-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .youtube-panel iframe,
+  .latest-video-link {
+    min-height: 280px;
+  }
+
+  .youtube-copy {
+    padding: 22px;
+  }
+
+  .youtube-copy h3 {
+    font-size: 28px;
+  }
+
+  .youtube-copy p {
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 14px 0 18px;
+  }
+
+  .youtube-copy .button {
+    min-height: 42px;
+    padding: 11px 16px;
   }
 
   .live-post-card > div {
@@ -543,17 +592,30 @@
 
 @media (max-width: 560px) {
   .blog-hero {
-    padding: 68px 16px;
+    padding: 42px 16px 46px;
   }
 
-  .blog-hero h1,
+  .blog-hero h1 {
+    font-size: 34px;
+  }
+
+  .blog-hero p:last-child {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
   .section-heading h2 {
-    font-size: 36px;
+    font-size: 30px;
   }
 
   .live-post-grid,
   .ad-column {
     grid-template-columns: 1fr;
+  }
+
+  .youtube-panel iframe,
+  .latest-video-link {
+    min-height: 220px;
   }
 
   .live-post-card h3 {
