@@ -29,7 +29,7 @@ function BlogPostCard({ onShare, onVote, votedType, post }) {
             className={votedType === 'like' ? 'active' : ''}
             type="button"
             disabled={!canInteract || Boolean(votedType)}
-            onClick={() => onVote(post.id, 'like')}
+            onClick={() => onVote(post, 'like')}
           >
             Like {post.likes || 0}
           </button>
@@ -37,7 +37,7 @@ function BlogPostCard({ onShare, onVote, votedType, post }) {
             className={votedType === 'dislike' ? 'active' : ''}
             type="button"
             disabled={!canInteract || Boolean(votedType)}
-            onClick={() => onVote(post.id, 'dislike')}
+            onClick={() => onVote(post, 'dislike')}
           >
             Dislike {post.dislikes || 0}
           </button>

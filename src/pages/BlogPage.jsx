@@ -54,8 +54,21 @@ function BlogPage() {
     );
   };
 
-  const handleVote = async (id, voteType) => {
+  const handleVote = async (post, voteType) => {
+    const id = post.id;
     if (votedPosts[id]) return;
+
+    const previousCounts = {
+      likes: Number(post.likes || 0),
+      dislikes: Number(post.dislikes || 0),
+    };
+    const optimisticCounts = {
+      likes: previousCounts.likes + (voteType === 'like' ? 1 : 0),
+      dislikes: previousCounts.dislikes + (voteType === 'dislike' ? 1 : 0),
+    };
+
+    updatePostCounts(id, optimisticCounts);
+    setPostStatus('Saving your vote...');
 
     try {
       const result = await voteBlogPost(id, voteType);
@@ -63,10 +76,12 @@ function BlogPage() {
       setVotedPosts(nextVotes);
       localStorage.setItem('blog-post-votes', JSON.stringify(nextVotes));
       updatePostCounts(id, {
-        likes: result.post.likes,
-        dislikes: result.post.dislikes,
+        likes: result.post?.likes ?? optimisticCounts.likes,
+        dislikes: result.post?.dislikes ?? optimisticCounts.dislikes,
       });
+      setPostStatus('');
     } catch (error) {
+      updatePostCounts(id, previousCounts);
       setPostStatus(error.message || 'Vote could not be saved.');
     }
   };
