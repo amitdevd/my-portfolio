@@ -165,20 +165,21 @@
   align-items: start;
   display: grid;
   gap: 24px;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.28fr);
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.24fr);
 }
 
 .live-post-grid {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .live-post-card {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 6px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -192,37 +193,45 @@
 }
 
 .live-post-card > div {
-  display: grid;
-  gap: 12px;
-  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+  padding: 16px;
   min-width: 0;
 }
 
 .live-post-card span {
   color: var(--coral);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
+  letter-spacing: 0.4px;
   text-transform: uppercase;
 }
 
 .live-post-card h3 {
   color: var(--deep);
-  font-size: 26px;
-  line-height: 1.15;
+  font-size: 20px;
+  line-height: 1.25;
   margin: 0;
   overflow-wrap: anywhere;
 }
 
 .live-post-card p {
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  line-height: 1.55;
   margin: 0;
+  overflow: hidden;
   overflow-wrap: anywhere;
 }
 
 .live-post-card a {
   color: var(--green);
+  font-size: 14px;
   font-weight: 900;
   text-decoration: none;
 }
@@ -230,35 +239,38 @@
 .post-actions {
   display: flex;
   flex-wrap: nowrap;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
 }
 
 .post-actions button {
   align-items: center;
-  background: rgba(36, 107, 91, 0.1);
+  background: rgba(36, 107, 91, 0.08);
   border: 1px solid rgba(36, 107, 91, 0.16);
   border-radius: 999px;
   color: var(--green);
   cursor: pointer;
   display: inline-flex;
   font: inherit;
-  font-size: 15px;
-  font-weight: 900;
-  gap: 5px;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 4px;
   justify-content: center;
-  min-height: 36px;
-  min-width: 42px;
-  padding: 8px 10px;
+  min-height: 32px;
+  min-width: 36px;
+  padding: 6px 10px;
   white-space: nowrap;
 }
 
 .post-actions button svg {
   flex: 0 0 auto;
+  height: 15px;
+  width: 15px;
 }
 
 .post-actions button strong {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .post-actions button:hover,
@@ -504,7 +516,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1080px) {
   .blog-layout {
     grid-template-columns: 1fr;
   }
@@ -515,7 +527,7 @@
   }
 
   .ad-slot {
-    min-height: 130px;
+    min-height: 120px;
   }
 }
 
@@ -594,7 +606,7 @@
   }
 
   .live-post-card h3 {
-    font-size: 22px;
+    font-size: 19px;
   }
 
   .post-actions {
@@ -647,7 +659,7 @@
   }
 
   .live-post-card h3 {
-    font-size: 24px;
+    font-size: 19px;
   }
 }
 
