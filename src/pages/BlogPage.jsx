@@ -34,13 +34,22 @@ function BlogPage() {
     fetchBlogPosts()
       .then((items) => {
         if (!isMounted) return;
-        setPosts(items.length ? items : fallbackBlogPosts);
-        setPostStatus(items.length ? '' : 'No live posts yet. Showing starter content.');
+        if (items.length) {
+          setPosts(items);
+          setPostStatus('');
+          return;
+        }
+
+        setPosts(fallbackBlogPosts);
+        setPostStatus('No published posts found yet. Showing starter content.');
       })
-      .catch(() => {
+      .catch((error) => {
         if (!isMounted) return;
         setPosts(fallbackBlogPosts);
-        setPostStatus('Connect Supabase to show live posts from admin panel.');
+        setPostStatus(
+          error.message ||
+            'Could not load live posts. Check Supabase env vars on Netlify and redeploy the site.'
+        );
       });
 
     return () => {

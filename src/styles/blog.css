@@ -274,7 +274,7 @@
 
 .ad-column {
   display: grid;
-  gap: 16px;
+  gap: 12px;
   position: sticky;
   top: 110px;
 }
@@ -286,8 +286,8 @@
   border-radius: 6px;
   color: var(--muted);
   display: grid;
-  min-height: 220px;
-  padding: 22px;
+  min-height: 150px;
+  padding: 16px;
   text-align: center;
 }
 
@@ -301,7 +301,7 @@
 .ad-slot p {
   font-size: 15px;
   line-height: 1.5;
-  margin: 10px 0 0;
+  margin: 8px 0 0;
 }
 
 .youtube-section {
@@ -411,8 +411,9 @@
 
 .youtube-grid {
   display: grid;
-  gap: 28px;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  min-width: 0;
 }
 
 .youtube-card {
@@ -477,11 +478,15 @@
 }
 
 .shorts-grid {
-  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .short-card .youtube-thumb {
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 3 / 4;
+}
+
+.short-card strong {
+  font-size: 15px;
 }
 
 .youtube-empty {
@@ -507,6 +512,10 @@
   .ad-column {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     position: static;
+  }
+
+  .ad-slot {
+    min-height: 130px;
   }
 }
 
@@ -570,6 +579,16 @@
     padding: 11px 16px;
   }
 
+  .youtube-grid,
+  .shorts-grid {
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .youtube-card strong {
+    font-size: 15px;
+  }
+
   .live-post-card > div {
     padding: 16px;
   }
@@ -613,9 +632,18 @@
     grid-template-columns: 1fr;
   }
 
+  .ad-slot {
+    min-height: 110px;
+  }
+
   .youtube-panel iframe,
   .latest-video-link {
     min-height: 220px;
+  }
+
+  .youtube-grid,
+  .shorts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .live-post-card h3 {

@@ -71,7 +71,29 @@ async function supabaseRequest(path, options = {}) {
   return response.json();
 }
 
+async function fetchBlogPostsFromFunction() {
+  const response = await fetch('/.netlify/functions/get-blog-posts');
+
+  if (!response.ok) {
+    throw new Error('Live blog feed is unavailable.');
+  }
+
+  const items = await response.json();
+
+  if (!Array.isArray(items)) {
+    throw new Error('Live blog feed returned invalid data.');
+  }
+
+  return items;
+}
+
 export async function fetchBlogPosts() {
+  try {
+    return await fetchBlogPostsFromFunction();
+  } catch (error) {
+    // Local dev and non-Netlify hosts fall back to direct Supabase reads.
+  }
+
   return supabaseRequest('blog_posts?select=*&is_published=eq.true&order=published_at.desc');
 }
 

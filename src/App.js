@@ -258,11 +258,13 @@ function ContactForm() {
 }
 
 function App() {
-  if (window.location.pathname === '/admin') {
+  const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+
+  if (pathname === '/admin' || pathname.endsWith('/admin')) {
     return <AdminPage />;
   }
 
-  if (window.location.pathname === '/blog') {
+  if (pathname === '/blog' || pathname.endsWith('/blog')) {
     return <BlogPage />;
   }
 
