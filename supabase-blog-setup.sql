@@ -20,6 +20,8 @@ add column if not exists dislikes integer not null default 0;
 
 alter table public.blog_posts enable row level security;
 
+drop policy if exists "Public can read published posts" on public.blog_posts;
+
 create policy "Public can read published posts"
 on public.blog_posts
 for select
