@@ -35,7 +35,7 @@ exports.handler = async () => {
     statusCode: 200,
     headers: {
       'Content-Type': 'application/json',
-      'Cache-Control': 'public, max-age=60',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
     },
     body: JSON.stringify(await response.json()),
   };

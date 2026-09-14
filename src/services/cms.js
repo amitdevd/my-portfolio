@@ -72,7 +72,9 @@ async function supabaseRequest(path, options = {}) {
 }
 
 async function fetchBlogPostsFromFunction() {
-  const response = await fetch('/.netlify/functions/get-blog-posts');
+  const response = await fetch(`/.netlify/functions/get-blog-posts?t=${Date.now()}`, {
+    cache: 'no-store',
+  });
 
   if (!response.ok) {
     throw new Error('Live blog feed is unavailable.');
