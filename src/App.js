@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -353,6 +353,33 @@ function ContactForm() {
 function App() {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/';
 
+  useEffect(() => {
+    const targets = document.querySelectorAll('.reveal-on-scroll');
+
+    if (typeof IntersectionObserver === 'undefined') {
+      targets.forEach((target) => target.classList.add('is-visible'));
+      return;
+    }
+
+    const observerCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px',
+    });
+
+    targets.forEach((target) => observer.observe(target));
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
   if (pathname === '/admin' || pathname.endsWith('/admin')) {
     return <AdminPage />;
   }
@@ -367,7 +394,7 @@ function App() {
 
       <main>
         <section className="hero" id="home">
-          <div className="hero-copy">
+          <div className="hero-copy animate-fade-in-up">
             <p className="eyebrow">Frontend UI Developer</p>
             <h1>Amit Dwivedi</h1>
             <p className="hero-tagline">
@@ -388,16 +415,19 @@ function App() {
               <a className="button whatsapp-btn" href="https://wa.me/917827841274" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
             </div>
           </div>
-          <div className="hero-card" aria-label="Amit Dwivedi profile">
+          <div className="hero-card animate-float" aria-label="Amit Dwivedi profile">
             <img src="/img/mine.jpg" alt="Amit Dwivedi" />
             <div>
-              <span className="availability">Available for Frontend work</span>
+              <span className="availability">
+                <span className="pulse-dot" />
+                Available for Frontend work
+              </span>
               <strong>Frontend UI Developer</strong>
             </div>
           </div>
         </section>
 
-        <section className="social-strip" aria-label="Social links">
+        <section className="social-strip reveal-on-scroll" aria-label="Social links">
           {socialLinks.map((link) => (
             <a key={link.name} href={link.url} target="_blank" rel="noreferrer" aria-label={link.name}>
               <span>{link.label}</span>
@@ -406,7 +436,7 @@ function App() {
           ))}
         </section>
 
-        <section className="section about" id="about">
+        <section className="section about reveal-on-scroll" id="about">
           <div className="section-heading">
             <p className="eyebrow">About</p>
             <h2>About Me</h2>
@@ -427,13 +457,13 @@ function App() {
         </section>
 
         <section className="section" id="experience">
-          <div className="section-heading">
+          <div className="section-heading reveal-on-scroll">
             <p className="eyebrow">Career</p>
             <h2>Work Experience</h2>
           </div>
           <div className="timeline">
             {experience.map((item) => (
-              <article className="experience-card" key={item.company}>
+              <article className="experience-card reveal-on-scroll" key={item.company}>
                 <div className="timeline-dot" />
                 <div className="experience-header">
                   <div>
@@ -480,7 +510,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section projects" id="projects">
+        <section className="section projects reveal-on-scroll" id="projects">
           <div className="section-heading">
             <p className="eyebrow">Projects</p>
             <h2>Featured Work</h2>
@@ -488,7 +518,7 @@ function App() {
           <ProjectCarousel />
         </section>
 
-        <section className="section skills" id="skills">
+        <section className="section skills reveal-on-scroll" id="skills">
           <div className="section-heading">
             <p className="eyebrow">Technical Skills</p>
             <h2>Proficiency & Tech Stack</h2>
@@ -502,7 +532,7 @@ function App() {
                   <strong>{skill.level}%</strong>
                 </div>
                 <div className="skill-track">
-                  <span style={{ width: `${skill.level}%` }} />
+                  <span className="skill-fill" style={{ width: `${skill.level}%` }} />
                 </div>
               </div>
             ))}
@@ -512,7 +542,7 @@ function App() {
             <h3 className="categories-heading">Comprehensive Skill Breakdown (Resume Aligned)</h3>
             <div className="categories-grid">
               {skillCategories.map((group) => (
-                <div className="category-card" key={group.category}>
+                <div className="category-card reveal-on-scroll" key={group.category}>
                   <h4>{group.category}</h4>
                   <div className="category-tags">
                     {group.items.map((item) => (
@@ -525,14 +555,14 @@ function App() {
           </div>
         </section>
 
-        <section className="section achievements-section" id="achievements">
+        <section className="section achievements-section reveal-on-scroll" id="achievements">
           <div className="section-heading">
             <p className="eyebrow">Milestones</p>
             <h2>Key Achievements</h2>
           </div>
           <div className="achievements-grid">
             {keyAchievements.map((item) => (
-              <article className="achievement-card" key={item.title}>
+              <article className="achievement-card reveal-on-scroll" key={item.title}>
                 <div className="achievement-badge">{item.stat}</div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -542,13 +572,13 @@ function App() {
         </section>
 
         <section className="section" id="education">
-          <div className="section-heading">
+          <div className="section-heading reveal-on-scroll">
             <p className="eyebrow">Education</p>
             <h2>Education</h2>
           </div>
           <div className="education-list">
             {education.map((item) => (
-              <article className="education-card" key={item.year}>
+              <article className="education-card reveal-on-scroll" key={item.year}>
                 <div className="year-block">
                   <span>{item.year}</span>
                   <strong>{item.degree}</strong>
@@ -563,21 +593,21 @@ function App() {
           </div>
         </section>
 
-        <section className="contact" id="contact">
+        <section className="contact reveal-on-scroll" id="contact">
           <div>
             <p className="eyebrow">Hire me</p>
             <h2>I design and develop modern, responsive and user-friendly web interfaces using Angular, React and clean UI/UX practices.</h2>
             <p className="contact-copy">Fill the form and your email app will open with the message ready to send to contacttodwivedi@gmail.com, or reach out directly below.</p>
             
             <div className="direct-contact-cards">
-              <div className="direct-contact-item">
+              <div className="direct-contact-item reveal-on-scroll">
                 <span className="contact-icon">📍</span>
                 <div>
                   <strong>Location</strong>
                   <p>Ghaziabad, Uttar Pradesh, India</p>
                 </div>
               </div>
-              <div className="direct-contact-item">
+              <div className="direct-contact-item reveal-on-scroll">
                 <span className="contact-icon">📞</span>
                 <div>
                   <strong>Phone</strong>
@@ -588,14 +618,14 @@ function App() {
                   </p>
                 </div>
               </div>
-              <div className="direct-contact-item">
+              <div className="direct-contact-item reveal-on-scroll">
                 <span className="contact-icon">✉️</span>
                 <div>
                   <strong>Email</strong>
                   <p><a href="mailto:contacttodwivedi@gmail.com">contacttodwivedi@gmail.com</a></p>
                 </div>
               </div>
-              <div className="direct-contact-item">
+              <div className="direct-contact-item reveal-on-scroll">
                 <span className="contact-icon">🌐</span>
                 <div>
                   <strong>Portfolio & GitHub</strong>
@@ -608,7 +638,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="contact-panel">
+          <div className="contact-panel reveal-on-scroll">
             <ContactForm />
             <div className="contact-links">
               {socialLinks.map((link) => (
