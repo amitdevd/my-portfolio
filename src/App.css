@@ -1,4 +1,21 @@
-:root {
+:root,
+[data-theme="option3"] {
+  --ink: #1c1917;
+  --muted: #57534e;
+  --paper: #fafaf9;
+  --panel: #ffffff;
+  --line: #e7e5e4;
+  --green: #1b493e;
+  --coral: #d32864;
+  --gold: #d97706;
+  --deep: #12231e;
+  --section-alt: #f3f6f4;
+  --card-subtle: #f5f5f4;
+  --topbar-bg: rgba(250, 250, 249, 0.92);
+  --shadow: 0 20px 60px rgba(27, 73, 62, 0.08);
+}
+
+[data-theme="original"] {
   --ink: #17211f;
   --muted: #65716e;
   --paper: #f7f2e8;
@@ -8,7 +25,42 @@
   --coral: #dd6b52;
   --gold: #d3a13a;
   --deep: #102622;
+  --section-alt: #e9f0e6;
+  --card-subtle: #f7efe0;
+  --topbar-bg: rgba(247, 242, 232, 0.88);
   --shadow: 0 24px 80px rgba(31, 45, 42, 0.14);
+}
+
+[data-theme="option1"] {
+  --ink: #0f172a;
+  --muted: #475569;
+  --paper: #f8fafc;
+  --panel: #ffffff;
+  --line: #e2e8f0;
+  --green: #0d9488;
+  --coral: #e11d48;
+  --gold: #f59e0b;
+  --deep: #0f172a;
+  --section-alt: #f1f5f9;
+  --card-subtle: #f1f5f9;
+  --topbar-bg: rgba(248, 250, 252, 0.92);
+  --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="dark"] {
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --paper: #090d16;
+  --panel: #131c31;
+  --line: rgba(255, 255, 255, 0.1);
+  --green: #10b981;
+  --coral: #f43f5e;
+  --gold: #fbbf24;
+  --deep: #050811;
+  --section-alt: #0e1526;
+  --card-subtle: #1a243a;
+  --topbar-bg: rgba(9, 13, 22, 0.92);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -22,6 +74,7 @@ html {
 body {
   background: var(--paper);
   color: var(--ink);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -36,8 +89,8 @@ a {
 .topbar {
   align-items: center;
   backdrop-filter: blur(16px);
-  background: rgba(247, 242, 232, 0.88);
-  border-bottom: 1px solid rgba(36, 107, 91, 0.14);
+  background: var(--topbar-bg);
+  border-bottom: 1px solid var(--line);
   display: flex;
   gap: 24px;
   justify-content: space-between;
@@ -433,7 +486,7 @@ a {
 }
 
 .mini-card {
-  background: #f7efe0;
+  background: var(--card-subtle);
   border: 1px solid rgba(36, 107, 91, 0.12);
   border-radius: 6px;
   padding: 16px;
@@ -475,7 +528,7 @@ a {
 }
 
 .skills {
-  background: #e9f0e6;
+  background: var(--section-alt);
 }
 
 .skill-list {
@@ -485,8 +538,8 @@ a {
 }
 
 .skill-item {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(36, 107, 91, 0.13);
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: 6px;
   padding: 18px;
 }
@@ -536,8 +589,8 @@ a {
 }
 
 .category-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(36, 107, 91, 0.16);
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(31, 45, 42, 0.04);
   padding: 22px;
@@ -565,10 +618,10 @@ a {
 }
 
 .skill-chip {
-  background: #f7efe0;
-  border: 1px solid rgba(36, 107, 91, 0.14);
+  background: var(--card-subtle);
+  border: 1px solid var(--line);
   border-radius: 6px;
-  color: var(--deep);
+  color: var(--ink);
   font-size: 13px;
   font-weight: 700;
   padding: 6px 12px;
@@ -1219,5 +1272,160 @@ a {
 
 .social-strip span {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ============================================================
+   THEME SWITCHER FLOATING WIDGET
+   ============================================================ */
+
+.theme-switcher-container {
+  bottom: 24px;
+  position: fixed;
+  right: 24px;
+  z-index: 9999;
+}
+
+.theme-switcher-toggle {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 8px;
+  padding: 10px 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.theme-switcher-toggle:hover {
+  border-color: var(--coral);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+  transform: translateY(-3px);
+}
+
+.theme-toggle-icon {
+  font-size: 16px;
+}
+
+.theme-switcher-modal {
+  animation: fadeInUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  backdrop-filter: blur(20px);
+  background: var(--panel);
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  bottom: calc(100% + 12px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.24);
+  max-width: 320px;
+  padding: 18px;
+  position: absolute;
+  right: 0;
+  width: 90vw;
+}
+
+.theme-modal-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.theme-modal-header h4 {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.theme-modal-desc {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.theme-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.theme-option-item {
+  align-items: center;
+  background: var(--card-subtle);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  justify-content: space-between;
+  padding: 10px 12px;
+  text-align: left;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.theme-option-item:hover {
+  background: var(--panel);
+  border-color: var(--coral);
+  transform: translateX(2px);
+}
+
+.theme-option-item.active {
+  background: var(--panel);
+  border-color: var(--coral);
+  box-shadow: 0 0 0 1.5px var(--coral);
+}
+
+.theme-option-left {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.theme-icon {
+  font-size: 18px;
+}
+
+.theme-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.theme-badge {
+  color: var(--muted);
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.theme-check {
+  color: var(--coral);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+@media (max-width: 720px) {
+  .theme-switcher-container {
+    bottom: 16px;
+    right: 16px;
+  }
 }
 

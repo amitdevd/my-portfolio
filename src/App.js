@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import AdminPage from './pages/AdminPage';
 import BlogPage from './pages/BlogPage';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
 const coreProficiencies = [
   { name: 'Angular (15, 16, 17) & Angular Material', level: 90 },
@@ -652,6 +653,7 @@ function App() {
         </section>
       </main>
 
+      <ThemeSwitcher />
       <Footer />
     </div>
   );
