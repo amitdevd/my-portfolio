@@ -5,24 +5,90 @@ import Footer from './components/Footer';
 import AdminPage from './pages/AdminPage';
 import BlogPage from './pages/BlogPage';
 
-const skills = [
-  { name: 'ANGULAR 15, 16, 17', level: 40 },
-  { name: 'REACT JS', level: 40 },
-  { name: 'CSS (Bootstrap, Tailwind, Material UI, Angular material)', level: 80 },
-  { name: 'JAVASCRIPT JQUERY', level: 60 },
-  { name: 'HTML', level: 90 },
+const coreProficiencies = [
+  { name: 'Angular (15, 16, 17) & Angular Material', level: 90 },
+  { name: 'React.js & React Native (Expo)', level: 90 },
+  { name: 'TypeScript & JavaScript (ES6+)', level: 90 },
+  { name: 'HTML5, CSS3, SCSS, Tailwind CSS & MaterialUI', level: 95 },
+  { name: 'REST APIs, API Consumption & Client-side Validation', level: 88 },
+  { name: 'Gen AI Tools (ChatGPT, Copilot, Cursor AI)', level: 85 },
+];
+
+const skillCategories = [
+  {
+    category: 'Frameworks & Libraries',
+    items: ['Angular', 'Angular Material', 'React.js', 'React Native', 'Expo'],
+  },
+  {
+    category: 'Languages & Styling',
+    items: ['TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'SCSS', 'Tailwind CSS', 'MaterialUI'],
+  },
+  {
+    category: 'Frontend & Mobile UI',
+    items: ['Responsive UI', 'Mobile App UI', 'Material Design', 'Bootstrap 5', 'jQuery (legacy / augmentation)'],
+  },
+  {
+    category: 'APIs & Integrations',
+    items: ['REST APIs', 'API Consumption', 'Client-side Validation', 'Error Handling', 'Async State Management'],
+  },
+  {
+    category: 'Developer Tools & Cloud',
+    items: ['Git / GitLab', 'Browser DevTools', 'Microsoft Azure', 'Postman', 'VS Code', 'npm / Yarn'],
+  },
+  {
+    category: 'Gen AI & Modern Tooling',
+    items: ['Build AI Interfaces', 'ChatGPT OpenAI', 'GitHub Copilot', 'Cursor AI'],
+  },
+  {
+    category: 'Focus Areas & Practices',
+    items: ['Component-based Architecture', 'UX Implementation', 'Cross-platform Mobile UI', 'SEO', 'Performance Optimization', 'Accessibility (a11y)'],
+  },
+];
+
+const focusAreas = [
+  'Component-based Architecture',
+  'UX / UI Implementation',
+  'Cross-platform Mobile UI',
+  'REST API Integration',
+  'SEO & Web Vitals',
+  'Performance Optimization',
+  'Accessibility (a11y)',
+  'Design Systems',
+];
+
+const keyAchievements = [
+  {
+    stat: '15+',
+    title: 'Responsive Web Applications',
+    description: 'Engineered high-performance, mobile-first responsive web apps across various industries and production environments.',
+  },
+  {
+    stat: 'React & Angular',
+    title: 'UI Development Mastery',
+    description: 'Expertise in both major enterprise frontend ecosystems, building scalable single-page and cross-platform applications.',
+  },
+  {
+    stat: 'REST APIs',
+    title: 'API Integration & Handling',
+    description: 'Seamless integration of backend REST APIs with client-side validation, error management, and responsive data flows.',
+  },
+  {
+    stat: 'Modular',
+    title: 'Reusable Component Architecture',
+    description: 'Created consistent design systems, reusable UI component libraries, and clean maintainable codebases.',
+  },
+  {
+    stat: 'Pixel-Perfect',
+    title: 'Responsive & Accessible UI',
+    description: 'Translated Figma/PSD designs with high fidelity, ensuring cross-browser compatibility and accessible interfaces.',
+  },
 ];
 
 const socialLinks = [
   {
-    name: 'Facebook',
-    label: 'Fb',
-    url: 'https://www.facebook.com/amitdwivedi786786/',
-  },
-  {
-    name: 'Instagram',
-    label: 'In',
-    url: 'https://www.instagram.com/stories/dwivedi.amit154/',
+    name: 'GitHub',
+    label: 'Gh',
+    url: 'https://github.com/amitdevd',
   },
   {
     name: 'LinkedIn',
@@ -30,9 +96,14 @@ const socialLinks = [
     url: 'https://www.linkedin.com/in/amit-dwivedi-08b415b0/',
   },
   {
-    name: 'GitHub',
-    label: 'Gh',
-    url: 'https://github.com/amitdevd',
+    name: 'Instagram',
+    label: 'In',
+    url: 'https://www.instagram.com/stories/dwivedi.amit154/',
+  },
+  {
+    name: 'Facebook',
+    label: 'Fb',
+    url: 'https://www.facebook.com/amitdwivedi786786/',
   },
 ];
 
@@ -73,19 +144,42 @@ const fluperProjects = [
 
 const experience = [
   {
-    company: 'Fluper',
-    period: 'June 10 2024 to November 2025',
-    role: 'Angular Designer',
+    company: 'Avaal Technologies Pvt. Ltd.',
+    period: 'Jun 2026 – Sep 2026',
+    role: 'Frontend Developer',
+    location: 'Gurugram, Haryana',
     summary:
-      'UI Developer with a focus on delivering impactful results, eager to tackle dynamic challenges and apply creativity to craft intuitive user experiences. Demonstrated proficiency in project management, user-centric problem-solving, and seamless collaboration across teams. Skilled in leveraging state-of-the-art tools and methodologies to streamline processes and elevate user satisfaction. To work in a creative and challenging environment where I can constantly learn and enhance my skills according to the latest trends and be part of a dynamic team that contributes to the growth of the organization.',
-    projects: fluperProjects,
+      'Developed and maintained frontend features using React and React Native, leveraging a component-based architecture to build scalable, reusable, and consistent user interfaces. Collaborated with UX/UI developers to implement pixel-perfect, responsive designs while ensuring design consistency across multiple devices and screen sizes. Improved frontend rendering performance by 25% by reducing unnecessary DOM operations and optimizing component rendering.',
+    points: [
+      'Developed and maintained frontend features using React and React Native, leveraging a component-based architecture to build scalable, reusable, and consistent user interfaces.',
+      'Collaborated with UX/UI developers to implement pixel-perfect, responsive designs while ensuring design consistency across multiple devices and screen sizes.',
+      'Improved frontend rendering performance by 25% by reducing unnecessary DOM operations and optimizing component rendering.',
+    ],
   },
   {
-    company: 'Superb Enterprises Pvt. Ltd',
-    period: 'Oct 2022 to April 2024',
-    role: 'Sr. Web Designer',
+    company: 'Fluper Ltd.',
+    period: 'Jun 2024 – Nov 2025',
+    role: 'Frontend Developer',
+    location: 'Noida, Uttar Pradesh',
     summary:
-      'Website design in Photoshop, convert the Photoshop design to HTML, Fix UI bugs with developers, worked with .net developers to provide them UI/UX help. Website provides attestation visa and document attached/authorized from Government, It is authorized/certified by Indian Govt. As a Web Designer, I worked on creating modern and responsive website designs using Photoshop, HTML, CSS, Bootstrap, and jQuery. My responsibilities included designing UI layouts, converting PSD designs into pixel-perfect HTML pages, and coordinating with .NET developers to ensure smooth UI/UX implementation. I contributed to government-authorized attestation and visa service websites by maintaining clean design standards and fixing UI issues to improve user experience.',
+      'Developed and maintained Angular frontend features using component-based architecture to deliver consistent, scalable UI. Collaborated with UX/UI to implement pixel-perfect designs and ensure design fidelity across responsive breakpoints. Improved page performance by optimizing UI rendering, reducing unnecessary DOM work, and refining frontend behavior.',
+    projects: fluperProjects,
+    points: [
+      'Developed and maintained Angular frontend features using component-based architecture to deliver consistent, scalable UI.',
+      'Collaborated with UX/UI to implement pixel-perfect designs and ensure design fidelity across responsive breakpoints.',
+      'Improved page performance by optimizing UI rendering, reducing unnecessary DOM work, and refining frontend behavior.',
+      'Integrated REST APIs into Angular screens and enhanced usability with client-side validation and error handling.',
+      'Followed frontend engineering best practices for code quality, naming conventions, and maintainability.',
+      'Leveraged ChatGPT and GitHub Copilot to accelerate development, generate boilerplate code, debug UI issues, and improve overall development efficiency.',
+    ],
+  },
+  {
+    company: 'Superb Enterprises Pvt. Ltd.',
+    period: 'Oct 2022 – May 2024',
+    role: 'Web Designer',
+    location: 'Delhi',
+    summary:
+      'Designed and built responsive ecommerce-facing UI using HTML5, CSS3/SCSS, Bootstrap 5, and jQuery for interactive behaviors. Converted design assets into working interfaces with a focus on clean markup, reusable UI patterns, and cross-browser compatibility. Enhanced user experience by improving layout, typography, and UI consistency across multiple web pages. Maintained code quality across concurrent projects by documenting changes and applying consistent frontend standards.',
     projectLinks: [
       ['Super Enterprise - Main Site', 'https://superenterprisesindia.com'],
       ['Delhi Attestation', 'https://superbattestation.com'],
@@ -95,43 +189,42 @@ const experience = [
       ['Umrah Services', 'https://umrahservices.in'],
     ],
     points: [
-      'Website provides attestation visa and document',
-      'attached/authorized from Government, It is authorized/certified by Indian Govt.',
-      'Create a color/font theme and follow on designs.',
-      'PSD Design as per requirement of seniors',
-      'Convert the design into HTML',
-      'Worked with dot net Developer to implement the HTML',
+      'Designed and built responsive ecommerce-facing UI using HTML5, CSS3/SCSS, Bootstrap 5, and jQuery for interactive behaviors.',
+      'Converted design assets into working interfaces with a focus on clean markup, reusable UI patterns, and cross-browser compatibility.',
+      'Enhanced user experience by improving layout, typography, and UI consistency across multiple web pages.',
+      'Maintained code quality across concurrent projects by documenting changes and applying consistent frontend standards.',
     ],
   },
   {
-    company: 'Brain Technosys Pvt. Ltd',
-    period: 'Mar 2021 to Sep 2022',
-    role: 'Web Designer',
+    company: 'Brain Technosys Pvt. Ltd.',
+    period: 'Mar 2021 – Sep 2022',
+    role: 'Web Developer',
+    location: 'Noida',
     summary:
-      'Converted PSD designs into responsive HTML/CSS using Bootstrap. Designed website layouts and page structures in Adobe Photoshop, enhancing user experience based on senior team requirements. Created and developed color palettes, typography themes, and UI style guidelines for consistent visual identity across services. Collaborated with .NET developers to integrate HTML templates, improving backend functionality alignment and frontend reliability. Fixed UI bugs, improved layout responsiveness, and enhanced usability across devices. Ensured all pages met UI/UX standards and delivered clean, optimized front-end code. Delivered websites for attestation, visa processing, and document authorization services with compliance to Indian Government standards.',
+      'Developed frontend components with HTML, CSS, and JavaScript, aligning UI with product requirements and UX guidelines. Worked closely with backend developers to integrate API endpoints and ensure smooth data flow into UI. Ensured responsive behavior and cross-browser functionality through testing and iterative UI fixes. Assisted with UI troubleshooting and defect resolution to improve release readiness.',
     points: [
-      'Create a color/font theme and follow on designs.',
-      'PSD Design as per requirement of seniors',
-      'Convert the design into HTML',
-      'Worked with dot net Developer to implement the HTML',
+      'Developed frontend components with HTML, CSS, and JavaScript, aligning UI with product requirements and UX guidelines.',
+      'Worked closely with backend developers to integrate API endpoints and ensure smooth data flow into UI.',
+      'Ensured responsive behavior and cross-browser functionality through testing and iterative UI fixes.',
+      'Assisted with UI troubleshooting and defect resolution to improve release readiness.',
     ],
   },
 ];
 
 const education = [
   {
-    year: '2012',
-    degree: 'Master Degree',
-    title: 'Master of Commerce(Private)',
-    school: 'C.C.S. University Meerut',
-    text: 'Developed expertise in commerce subjects such as accounting, finance, and business management with a focus on analytical and problem-solving skills.',
+    year: '2009 – 2012',
+    degree: "Bachelor's Degree",
+    title: 'Bachelor of Commerce (B.Com)',
+    school: 'MMH College, India (C.C.S. University Meerut)',
+    text: 'Gained a strong foundation in commerce and business principles, enhancing analytical, economic, and quantitative problem-solving skills.',
   },
   {
-    year: '2009',
-    degree: "Bachelor's Degree",
-    title: 'Bachelor of Commerce(Regular)',
+    year: '2012',
+    degree: 'Master Degree',
+    title: 'Master of Commerce (M.Com)',
     school: 'C.C.S. University Meerut',
-    text: 'Gained a strong foundation in commerce and business principles, enhancing knowledge of economics, finance, and accounting practices.',
+    text: 'Developed advanced expertise in commerce subjects such as accounting, finance, and business management with a focus on analytical problem-solving.',
   },
 ];
 
@@ -275,27 +368,37 @@ function App() {
       <main>
         <section className="hero" id="home">
           <div className="hero-copy">
-            <p className="eyebrow">Frontend Developer</p>
+            <p className="eyebrow">Frontend UI Developer</p>
             <h1>Amit Dwivedi</h1>
-            <p className="hero-text">
-              Creative and results-driven UI Developer crafting visually stunning and user-friendly web interfaces with HTML, CSS, JavaScript, Angular, and React.
+            <p className="hero-tagline">
+              Angular | React | TypeScript | UI/UX | Design Systems
             </p>
+            <p className="hero-text">
+              Frontend UI Developer with 5+ years of experience building responsive, accessible and production-ready web applications using React, Angular and TypeScript. Experienced in translating Figma designs into reusable UI components, integrating REST APIs, implementing responsive interfaces and collaborating with UX/UI teams.
+            </p>
+            <div className="hero-pills">
+              <span className="pill-item">📍 Ghaziabad, UP, India</span>
+              <a className="pill-item pill-link" href="tel:+917827841274">📞 +91 7827841274</a>
+              <a className="pill-item pill-link" href="mailto:contacttodwivedi@gmail.com">✉️ contacttodwivedi@gmail.com</a>
+              <span className="pill-item">⚡ 5+ Years Experience</span>
+            </div>
             <div className="hero-actions">
               <a className="button primary" href="#contact">Hire Me</a>
               <a className="button secondary" href="/img/amit_resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+              <a className="button whatsapp-btn" href="https://wa.me/917827841274" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
             </div>
           </div>
           <div className="hero-card" aria-label="Amit Dwivedi profile">
             <img src="/img/mine.jpg" alt="Amit Dwivedi" />
             <div>
-              <span className="availability">Available for UI work</span>
-              <strong>Angular Designer</strong>
+              <span className="availability">Available for Frontend work</span>
+              <strong>Frontend UI Developer</strong>
             </div>
           </div>
         </section>
 
         <section className="social-strip" aria-label="Social links">
-          {socialLinks.slice(0, 3).map((link) => (
+          {socialLinks.map((link) => (
             <a key={link.name} href={link.url} target="_blank" rel="noreferrer" aria-label={link.name}>
               <span>{link.label}</span>
               {link.name}
@@ -308,9 +411,19 @@ function App() {
             <p className="eyebrow">About</p>
             <h2>About Me</h2>
           </div>
-          <p>
-            Creative and results-driven UI Developer with a passion for crafting visually stunning and user-friendly web interfaces. With a strong foundation in front-end technologies and a keen eye for design, I specialize in transforming concepts into engaging digital experiences. My expertise lies in HTML, CSS, JavaScript, and modern frameworks like Angular and React, allowing me to create responsive and intuitive user interfaces. I thrive in collaborative environments, working closely with cross-functional teams to deliver seamless and impactful solutions that enhance user satisfaction and drive business success.
-          </p>
+          <div className="about-details">
+            <p>
+              Frontend UI Developer with 5+ years of experience building responsive, accessible and production-ready web applications using React, Angular and TypeScript. Experienced in translating Figma designs into reusable UI components, integrating REST APIs, implementing responsive interfaces and collaborating with UX/UI teams.
+            </p>
+            <div className="focus-areas-block">
+              <h3>Core Focus Areas</h3>
+              <div className="tag-cloud">
+                {focusAreas.map((area) => (
+                  <span className="tag-badge" key={area}>{area}</span>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="section" id="experience">
@@ -325,7 +438,10 @@ function App() {
                 <div className="experience-header">
                   <div>
                     <h3>{item.company}</h3>
-                    <p>{item.role}</p>
+                    <p>
+                      {item.role}
+                      {item.location && <span className="location-tag"> • {item.location}</span>}
+                    </p>
                   </div>
                   <span>{item.period}</span>
                 </div>
@@ -375,10 +491,11 @@ function App() {
         <section className="section skills" id="skills">
           <div className="section-heading">
             <p className="eyebrow">Technical Skills</p>
-            <h2>Frameworks / Libraries</h2>
+            <h2>Proficiency & Tech Stack</h2>
           </div>
+          
           <div className="skill-list">
-            {skills.map((skill) => (
+            {coreProficiencies.map((skill) => (
               <div className="skill-item" key={skill.name}>
                 <div className="skill-meta">
                   <span>{skill.name}</span>
@@ -388,6 +505,38 @@ function App() {
                   <span style={{ width: `${skill.level}%` }} />
                 </div>
               </div>
+            ))}
+          </div>
+
+          <div className="categories-wrapper">
+            <h3 className="categories-heading">Comprehensive Skill Breakdown (Resume Aligned)</h3>
+            <div className="categories-grid">
+              {skillCategories.map((group) => (
+                <div className="category-card" key={group.category}>
+                  <h4>{group.category}</h4>
+                  <div className="category-tags">
+                    {group.items.map((item) => (
+                      <span className="skill-chip" key={item}>{item}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section achievements-section" id="achievements">
+          <div className="section-heading">
+            <p className="eyebrow">Milestones</p>
+            <h2>Key Achievements</h2>
+          </div>
+          <div className="achievements-grid">
+            {keyAchievements.map((item) => (
+              <article className="achievement-card" key={item.title}>
+                <div className="achievement-badge">{item.stat}</div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
             ))}
           </div>
         </section>
@@ -418,7 +567,46 @@ function App() {
           <div>
             <p className="eyebrow">Hire me</p>
             <h2>I design and develop modern, responsive and user-friendly web interfaces using Angular, React and clean UI/UX practices.</h2>
-            <p className="contact-copy">Fill the form and your email app will open with the message ready to send to contacttodwivedi@gmail.com.</p>
+            <p className="contact-copy">Fill the form and your email app will open with the message ready to send to contacttodwivedi@gmail.com, or reach out directly below.</p>
+            
+            <div className="direct-contact-cards">
+              <div className="direct-contact-item">
+                <span className="contact-icon">📍</span>
+                <div>
+                  <strong>Location</strong>
+                  <p>Ghaziabad, Uttar Pradesh, India</p>
+                </div>
+              </div>
+              <div className="direct-contact-item">
+                <span className="contact-icon">📞</span>
+                <div>
+                  <strong>Phone</strong>
+                  <p>
+                    <a href="tel:+917827841274">+91 7827841274</a>
+                    {' • '}
+                    <a href="https://wa.me/917827841274" target="_blank" rel="noreferrer">WhatsApp</a>
+                  </p>
+                </div>
+              </div>
+              <div className="direct-contact-item">
+                <span className="contact-icon">✉️</span>
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:contacttodwivedi@gmail.com">contacttodwivedi@gmail.com</a></p>
+                </div>
+              </div>
+              <div className="direct-contact-item">
+                <span className="contact-icon">🌐</span>
+                <div>
+                  <strong>Portfolio & GitHub</strong>
+                  <p>
+                    <a href="https://github.com/amitdevd" target="_blank" rel="noreferrer">github.com/amitdevd</a>
+                    {' • '}
+                    <a href="https://amitdwivediportfolio.netlify.app/" target="_blank" rel="noreferrer">Netlify Live</a>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="contact-panel">
             <ContactForm />
