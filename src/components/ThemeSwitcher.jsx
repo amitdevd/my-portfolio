@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 
 const themes = [
-  { id: 'option3', label: 'Option 3 (Modern Sage & Rose)', badge: 'Active Default', icon: '🌿' },
+  { id: 'dark', label: 'Option 2 (Bold Red & Crimson)', badge: 'Red Edition 🔥', icon: '🔴' },
+  { id: 'option3', label: 'Option 3 (Modern Sage & Rose)', badge: 'Clean Minimalist', icon: '🌿' },
   { id: 'option1', label: 'Option 1 (Crisp Tech Light)', badge: 'Silicon Valley', icon: '⚡' },
-  { id: 'dark', label: 'Option 2 (Sleek Dark Mode)', badge: 'Cyber Tech', icon: '🌙' },
   { id: 'original', label: 'Original Theme', badge: 'Vintage Earthy', icon: '📜' },
 ];
 
 function ThemeSwitcher() {
   const [currentTheme, setCurrentTheme] = useState(() => {
-    return localStorage.getItem('portfolio_theme') || 'option3';
+    return localStorage.getItem('portfolio_theme') || 'dark';
   });
   const [isOpen, setIsOpen] = useState(false);
 
