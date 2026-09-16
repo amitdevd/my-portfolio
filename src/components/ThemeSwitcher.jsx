@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 const themes = [
-  { id: 'dark', label: 'Option 2 (Bold Red & Crimson)', badge: 'Red Edition 🔥', icon: '🔴' },
-  { id: 'option3', label: 'Option 3 (Modern Sage & Rose)', badge: 'Clean Minimalist', icon: '🌿' },
+  { id: 'dark', label: 'Option 2 (Light + Red Accents)', badge: 'Red Edition 🔴', icon: '🔴' },
+  { id: 'option3', label: 'Option 3 (Light + Sage Green)', badge: 'Sage Edition 🌿', icon: '🌿' },
   { id: 'option1', label: 'Option 1 (Crisp Tech Light)', badge: 'Silicon Valley', icon: '⚡' },
   { id: 'original', label: 'Original Theme', badge: 'Vintage Earthy', icon: '📜' },
 ];
@@ -39,7 +39,7 @@ function ThemeSwitcher() {
             </button>
           </div>
           <p className="theme-modal-desc">
-            Option 3 default active hai. Kisi bhi theme par click karke live preview test kar sakte hain:
+            Option 2 (Red) aur Option 3 (Green) dono ready hain. Kisi bhi theme par click karke live preview test kar sakte hain:
           </p>
           <div className="theme-options-list">
             {themes.map((theme) => (
