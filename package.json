@@ -2,7 +2,7 @@
   "name": "my-dumy-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://amitdevd.github.io/my-portfolio",
+  "homepage": "https://amitdwivediportfolio.netlify.app",
   "dependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
