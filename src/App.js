@@ -353,6 +353,14 @@ function ContactForm() {
 
 function App() {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+  const [expandedExperience, setExpandedExperience] = useState({});
+
+  const toggleExperience = (company) => {
+    setExpandedExperience((prev) => ({
+      ...prev,
+      [company]: !prev[company],
+    }));
+  };
 
   useEffect(() => {
     const targets = document.querySelectorAll('.reveal-on-scroll');
@@ -413,10 +421,9 @@ function App() {
             <div className="hero-actions">
               <a className="button primary" href="#contact">Hire Me</a>
               <a className="button secondary" href="/img/amit_resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
-              <a className="button whatsapp-btn" href="https://wa.me/917827841274" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
             </div>
           </div>
-          <div className="hero-card animate-float" aria-label="Amit Dwivedi profile">
+          <div className="hero-card animate-fade-in-up">
             <img src="/img/mine.jpg" alt="Amit Dwivedi" />
             <div>
               <span className="availability">
@@ -430,9 +437,9 @@ function App() {
 
         <section className="social-strip reveal-on-scroll" aria-label="Social links">
           {socialLinks.map((link) => (
-            <a key={link.name} href={link.url} target="_blank" rel="noreferrer" aria-label={link.name}>
-              <span>{link.label}</span>
-              {link.name}
+            <a key={link.name} href={link.url} target="_blank" rel="noreferrer" aria-label={link.name} title={link.name}>
+              <span className="social-icon">{link.label}</span>
+              <span className="social-text">{link.name}</span>
             </a>
           ))}
         </section>
@@ -463,51 +470,88 @@ function App() {
             <h2>Work Experience</h2>
           </div>
           <div className="timeline">
-            {experience.map((item) => (
-              <article className="experience-card reveal-on-scroll" key={item.company}>
-                <div className="timeline-dot" />
-                <div className="experience-header">
-                  <div>
-                    <h3>{item.company}</h3>
-                    <p>
-                      {item.role}
-                      {item.location && <span className="location-tag"> • {item.location}</span>}
-                    </p>
+            {experience.map((item) => {
+              const isExpanded = !!expandedExperience[item.company];
+              return (
+                <article
+                  className={`experience-card ${isExpanded ? 'is-expanded' : ''}`}
+                  key={item.company}
+                >
+                  <div className="timeline-dot" />
+                  <div
+                    className="experience-header"
+                    onClick={() => toggleExperience(item.company)}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isExpanded}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleExperience(item.company);
+                      }
+                    }}
+                  >
+                    <div className="experience-title-group">
+                      <h3>{item.company}</h3>
+                      <p>
+                        {item.role}
+                        {item.location && <span className="location-tag"> • {item.location}</span>}
+                      </p>
+                    </div>
+                    <div className="experience-period-wrap">
+                      <span className="period-tag">{item.period}</span>
+                      <span className={`experience-chevron ${isExpanded ? 'open' : ''}`} aria-hidden="true">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
+                        >
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
-                  <span>{item.period}</span>
-                </div>
-                <p>{item.summary}</p>
 
-                {item.projects && (
-                  <div className="mini-grid">
-                    {item.projects.map((project) => (
-                      <div className="mini-card" key={project.title}>
-                        <h4>{project.title}</h4>
-                        {project.details.map((detail) => (
-                          <p key={detail}>{detail}</p>
+                  <div className="experience-details" onClick={(e) => e.stopPropagation()}>
+                    <p>{item.summary}</p>
+
+                    {item.projects && (
+                      <div className="mini-grid">
+                        {item.projects.map((project) => (
+                          <div className="mini-card" key={project.title}>
+                            <h4>{project.title}</h4>
+                            {project.details.map((detail) => (
+                              <p key={detail}>{detail}</p>
+                            ))}
+                          </div>
                         ))}
                       </div>
-                    ))}
-                  </div>
-                )}
+                    )}
 
-                {item.projectLinks && (
-                  <div className="link-cloud">
-                    {item.projectLinks.map(([label, url]) => (
-                      <a key={label} href={url} target="_blank" rel="noreferrer">{label}</a>
-                    ))}
-                  </div>
-                )}
+                    {item.projectLinks && (
+                      <div className="link-cloud">
+                        {item.projectLinks.map(([label, url]) => (
+                          <a key={label} href={url} target="_blank" rel="noreferrer">{label}</a>
+                        ))}
+                      </div>
+                    )}
 
-                {item.points && (
-                  <ul className="points">
-                    {item.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-            ))}
+                    {item.points && (
+                      <ul className="points">
+                        {item.points.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </section>
 
