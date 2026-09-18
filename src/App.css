@@ -697,10 +697,9 @@ a {
   .experience-card.is-expanded .experience-details {
     display: block;
   }
-  .hero-actions{
-    display: none;
+  .hero-text{
+    max-width: 100%;
   }
-
   .experience-card:hover .experience-chevron,
   .experience-card.is-expanded .experience-chevron {
     transform: rotate(180deg);
@@ -1335,6 +1334,9 @@ a {
   }
   .hero-card{
     max-width: 340px;
+  }
+  .hero-actions{
+    display: none;
   }
   .hero::before{
     height: 48%;
