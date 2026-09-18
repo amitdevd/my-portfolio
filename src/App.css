@@ -440,12 +440,6 @@ a {
   gap: 1px;
   grid-template-columns: repeat(4, 1fr);
   margin: 0 clamp(20px, 6vw, 88px);
-  max-width: 350px;
-  width: 100%;
-  min-width: 280px;
-  justify-content: center;
-  display: flex;
-  align-items: center;
 }
 
 .social-strip a,
