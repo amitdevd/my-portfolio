@@ -141,6 +141,72 @@ a {
   justify-content: space-between;
 }
 
+.topbar-actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.header-quick-actions {
+  align-items: center;
+  display: none;
+  gap: 8px;
+}
+
+.quick-action-btn {
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 36px;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: 36px;
+}
+
+.quick-action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.quick-action-btn.hire-btn {
+  background: color-mix(in srgb, var(--green) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--green) 25%, transparent);
+  color: var(--green);
+}
+
+.quick-action-btn.hire-btn:hover {
+  background: var(--green);
+  color: white;
+}
+
+.quick-action-btn.cv-btn {
+  background: color-mix(in srgb, var(--coral) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--coral) 25%, transparent);
+  color: var(--coral);
+}
+
+.quick-action-btn.cv-btn:hover {
+  background: var(--coral);
+  color: white;
+}
+
+.quick-action-btn.whatsapp-btn {
+  background: #25D366;
+  border: 1px solid #20bd5a;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  color: white;
+}
+
+.quick-action-btn.whatsapp-btn:hover {
+  background: #20bd5a;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.45);
+}
+
+.quick-action-btn svg {
+  display: block;
+}
+
 .menu-toggle {
   align-items: center;
   background: transparent;
@@ -374,6 +440,12 @@ a {
   gap: 1px;
   grid-template-columns: repeat(4, 1fr);
   margin: 0 clamp(20px, 6vw, 88px);
+  max-width: 350px;
+  width: 100%;
+  min-width: 280px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .social-strip a,
@@ -384,20 +456,35 @@ a {
   font-weight: 800;
   gap: 12px;
   justify-content: center;
-  min-height: 76px;
+  min-height: 56px;
   text-decoration: none;
 }
 
-.social-strip span,
-.contact-links span {
+.social-strip .social-icon,
+.contact-links .social-icon {
   align-items: center;
   background: var(--coral);
   border-radius: 50%;
+  color: white;
   display: inline-flex;
-  font-size: 12px;
-  height: 34px;
+  flex: 0 0 auto;
+  height: 36px;
   justify-content: center;
-  width: 34px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 36px;
+}
+
+.social-strip .social-icon svg,
+.contact-links .social-icon svg {
+  display: block;
+}
+
+.social-strip .social-text,
+.contact-links .social-text {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .section {
@@ -407,6 +494,18 @@ a {
 .section-heading {
   margin-bottom: 30px;
   max-width: 700px;
+}
+
+.aboutUsImg{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-top: 15px;
+}
+.aboutUsImg img{
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .about .section-heading {
@@ -597,6 +696,9 @@ a {
   .experience-card:hover .experience-details,
   .experience-card.is-expanded .experience-details {
     display: block;
+  }
+  .hero-actions{
+    display: none;
   }
 
   .experience-card:hover .experience-chevron,
@@ -873,7 +975,8 @@ a {
 
 .contact h2 {
   color: white;
-  font-size: clamp(30px, 4vw, 54px);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
 }
 
 .contact-copy {
@@ -977,6 +1080,10 @@ a {
   padding: 12px 14px;
   resize: vertical;
   width: 100%;
+}
+.contact-form input{
+  min-height: 34px;
+  padding: 8px 10px;
 }
 
 .contact-form input:focus,
@@ -1138,7 +1245,7 @@ a {
     align-items: stretch;
     flex-direction: column;
     gap: 0;
-    padding: 10px 20px;
+    padding: 8px 16px;
   }
 
   .topbar-header {
@@ -1148,8 +1255,33 @@ a {
     width: 100%;
   }
 
+  .brand img {
+    height: auto;
+    max-height: 44px;
+    width: 110px;
+  }
+
+  .topbar-actions {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+  }
+
+  .header-quick-actions {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+  }
+
+  .quick-action-btn {
+    height: 34px;
+    width: 34px;
+  }
+
   .menu-toggle {
     display: inline-flex;
+    height: 34px;
+    width: 34px;
   }
 
   .nav-links {
@@ -1264,8 +1396,11 @@ a {
   .year-block{
     padding: 16px;
   }
+  .project-showcase{
+    min-height: 290px !important;
+  }
   .project-preview{
-    height: 290px;
+    height: 290px !important;
   }
   .project-content{
     padding: 16px !important;
@@ -1540,13 +1675,10 @@ a {
   transform: translateY(-2px);
 }
 
-.social-strip a:hover span {
+.social-strip a:hover .social-icon,
+.contact-links a:hover .social-icon {
   box-shadow: 0 4px 14px rgba(221, 107, 82, 0.5);
   transform: scale(1.08);
-}
-
-.social-strip span {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 /* ============================================================
